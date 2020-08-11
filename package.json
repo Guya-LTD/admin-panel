@@ -3,11 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@bit/guya-ltd.gcss.atoms.button": "^0.0.4",
+    "@bit/guya-ltd.gcss.molecules.field": "^0.0.2",
+    "@bit/guya-ltd.gcss.organisms.card": "^0.0.2",
+    "@bit/guya-ltd.gcss.organisms.formcontrol": "^0.0.1",
+    "@bit/guya-ltd.gcss.templates.landing.login": "^0.0.6",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.13.1",
+    "react-async": "^10.0.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-router-i18n": "^0.3.0",
     "react-scripts": "3.4.1"
   },
   "devDependencies": {
