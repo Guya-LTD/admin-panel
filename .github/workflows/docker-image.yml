@@ -31,3 +31,4 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: guyaltd/admin-panel
         tag_with_ref: true
+        target: production
