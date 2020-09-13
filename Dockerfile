@@ -21,7 +21,9 @@ COPY . ./
 ########################################################
 FROM base AS development
 
-RUN yarn start
+CMD CI=true yarn start
+
+EXPOSE 3000
 
 ########################################################
 # Production build                                     #
@@ -31,7 +33,7 @@ FROM base AS build
 RUN yarn run build
 
 ########################################################
-# Production environment
+# Production environment                               #
 ########################################################
 FROM guyaltd/nginx:v1.0.0 AS production
 
