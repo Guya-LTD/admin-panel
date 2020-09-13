@@ -19,7 +19,7 @@ RUN yarn run build
 #
 # production environment
 #
-FROM guyaltd/nginx:1.0.0
+FROM guyaltd/nginx:v1.0.0
 
 ENV WORK_DIR /usr/src/app
 
