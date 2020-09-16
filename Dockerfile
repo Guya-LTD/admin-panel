@@ -10,9 +10,7 @@ ENV PATH ${WORK_DIR}/node_modules/.bin:$PATH
 
 COPY package.json ./
 
-COPY yarn.lock ./
-
-RUN yarn install
+RUN npm install
 
 COPY . ./
 
@@ -21,7 +19,7 @@ COPY . ./
 ########################################################
 FROM base AS development
 
-CMD CI=true yarn start
+CMD CI=true npm start
 
 EXPOSE 3000
 
@@ -30,7 +28,7 @@ EXPOSE 3000
 ########################################################
 FROM base AS build
 
-RUN yarn run build
+RUN npm run build
 
 ########################################################
 # Production environment                               #
