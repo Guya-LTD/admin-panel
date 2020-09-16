@@ -8,11 +8,11 @@ cache:
     - node_modules
 
 install:
-  - yarn install
+  - npm install
 
 script:
-  - yarn test
+  - npm test
 
 after_success:
-  - yarn run semantic-release
+  - npm run semantic-release
 
