@@ -6,20 +6,21 @@ FROM node:13.12.0-alpine as base
 ENV WORK_DIR /usr/src/app
 WORKDIR ${WORK_DIR}
 
-ENV PATH ${WORK_DIR}/node_modules/.bin:$PATH
-
-COPY package.json ./
-
-RUN npm install
+#ENV PATH ${WORK_DIR}/node_modules/.bin:$PATH
 
 COPY . ./
+
+RUN yarn install
 
 ########################################################
 # Development build                                    #
 ########################################################
 FROM base AS development
 
-CMD CI=true npm start
+ENV WORK_DIR /usr/src/app
+WORKDIR ${WORK_DIR}
+
+CMD CI=true yarn start 
 
 EXPOSE 3000
 
@@ -28,7 +29,7 @@ EXPOSE 3000
 ########################################################
 FROM base AS build
 
-RUN npm run build
+RUN yarn run build
 
 ########################################################
 # Production environment                               #
