@@ -1,0 +1,15 @@
+########################################################
+# Development build                                    #
+########################################################
+FROM guyaltd/admin-panel:build  AS development
+
+ENV WORK_DIR /usr/src/app
+WORKDIR ${WORK_DIR}
+
+COPY . ./
+
+CMD CI=true yarn start 
+
+EXPOSE 3000
+
+

@@ -1,18 +1,4 @@
 ########################################################
-# Development build                                    #
-########################################################
-FROM guyaltd/admin-panel:build  AS development
-
-ENV WORK_DIR /usr/src/app
-WORKDIR ${WORK_DIR}
-
-COPY . ./
-
-CMD CI=true yarn start 
-
-EXPOSE 3000
-
-########################################################
 # Production environment                               #
 ########################################################
 FROM guyaltd/nginx:v1.0.0 AS production

@@ -4,7 +4,7 @@ import Route from 'routes/ServiceRoute';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Route />
+	<div> Admin Panel- Modified - second time </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
