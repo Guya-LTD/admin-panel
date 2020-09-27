@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Route from 'routes/ServiceRoute';
+import RouteService from 'routes/ServiceRoute';
 
 ReactDOM.render(
   <React.StrictMode>
-	<div> Admin Panel- Modified - second time </div>
+    <RouteService />
   </React.StrictMode>,
   document.getElementById('root')
 );
