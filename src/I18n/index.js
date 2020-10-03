@@ -8,6 +8,8 @@ import formEn from './en/form';
 import formAm from './am/form';
 import httpEn from './en/http';
 import httpAm from './am/http';
+import authEn from './en/auth';
+import authAm from './am/auth';
 
 // Array of supported locales
 // The first in the array is treated as the default locale
@@ -19,12 +21,14 @@ const translations = {
         credential: credentialEn,
         form: formEn,
         http: httpEn,
+        auth: authEn,
     },
     am: {
         app: appAm,
         credential: credentialAm,
         form: formAm,
         http: httpAm,
+        auth: authAm,
     }
 }
 

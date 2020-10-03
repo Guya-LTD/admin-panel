@@ -5,6 +5,7 @@
   "dependencies": {
     "@bit/guya-ltd.gcss.atoms.button": "^0.0.4",
     "@bit/guya-ltd.gcss.atoms.link": "^0.0.2",
+    "@bit/guya-ltd.gcss.molecules.blockquote": "^0.0.2",
     "@bit/guya-ltd.gcss.molecules.field": "^0.0.7",
     "@bit/guya-ltd.gcss.molecules.logo": "^0.0.1",
     "@bit/guya-ltd.gcss.organisms.card": "^0.0.2",

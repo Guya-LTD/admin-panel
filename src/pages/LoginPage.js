@@ -12,6 +12,7 @@ import Link from '@bit/guya-ltd.gcss.atoms.link';
 import Formcontrol from '@bit/guya-ltd.gcss.organisms.formcontrol';
 import Field from '@bit/guya-ltd.gcss.molecules.field';
 import Button from '@bit/guya-ltd.gcss.atoms.button';
+import Blockquote from '@bit/guya-ltd.gcss.molecules.blockquote';
 
 import Authorization from 'hocs/Authorization';
 import I18n from 'I18n';
@@ -19,7 +20,7 @@ import I18n from 'I18n';
 const { REACT_APP_GATEKEEPER_URL } = process.env;
 
 const LOGIN_URL = REACT_APP_GATEKEEPER_URL + '/api/v1/sessions'
-const base = '/:locale(en|am)?';
+
 const Login = (props) => {
     /* Localization */
     const locale = props.match.params.locale;
@@ -34,9 +35,15 @@ const Login = (props) => {
             })
         }, signal)
         .then(response => {
-            return response.json() 
+            if(response.status == 200)
+                return response.json();
+            else
+                setLoginError(true)
         })
-        .then(data => setEmail(data.token) );
+        .then(data => { 
+            setEmail(email);
+            console.log(data)
+        } );
     
 
     /* Async api call */
@@ -47,6 +54,9 @@ const Login = (props) => {
 
     /* State hooks */
     const [password, setPassword] = useState("");
+
+    /* Login Erro */
+    const [loginError, setLoginError] = useState(false);
 
     const handleLogin = event => {
         event.preventDefault();
@@ -76,8 +86,16 @@ const Login = (props) => {
             header={ loginHeader }
             footer={ loginFooter }>
             <Card>
-                {error && <Redirect push to={`/${locale}/error?status_code=500&stack_trace=L1`} />}
+                {error && <Redirect push to={`/${locale}/error?status_code=500&stack_trace=L1&message=${error.message}`} />}
                 {!isPending || '....'}
+                {loginError && <Blockquote
+                                type='notification'
+                                theme='royal-blue'
+                                variant='danger'
+                                header={ <I18n t="auth.login_failed" /> }
+                                body={ <I18n t="auth.login_failed_description" /> }
+                              />
+                }
                 <Formcontrol onSubmit={handleLogin}>
                     <Field
                         type='text'
