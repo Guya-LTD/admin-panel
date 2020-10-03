@@ -1,6 +1,8 @@
 const credential = {
     username: 'Username',
-    email: 'ኢሚል'
+    email: 'ኢሚል',
+    password: 'የይለፍ ቃል',
+    forget_password: 'እረሳሁት!'
 }
 
 export default credential;
