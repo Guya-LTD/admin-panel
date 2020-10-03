@@ -4,7 +4,9 @@ import React from 'react';
 const Authorization = (WrappedComponent) => 
     class WithAuthorization extends React.Component {
         render() {
-            return <WrappedComponent {...this.props} />
+            if(true){
+                return <WrappedComponent {...this.props} />
+            }
         }
     }
 
