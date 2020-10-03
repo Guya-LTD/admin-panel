@@ -20,6 +20,7 @@ const ServiceRoute = () => (
         <Switch>
           <Route exact path="/" component={IndexPage} />
           <Route path="/:locale(en|am)?/login" component={LoginPage} />
+          <Route path="/:locale(en|am)?/home/dashboards" component={LoginPage} />
           <Route path="/:locale(en|am)?/error" component={Error500Page} />
           <Route path="*" component={Error404Page} />
         </Switch>

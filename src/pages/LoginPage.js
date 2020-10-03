@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-i18n';
 import { IconContext } from "react-icons";
 import { IoIosMail, IoIosLock } from "react-icons/io";
 import { Redirect } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 
 import LoginTemplate from '@bit/guya-ltd.gcss.templates.landing.login';
 import Card from '@bit/guya-ltd.gcss.organisms.card';
@@ -14,7 +15,7 @@ import Field from '@bit/guya-ltd.gcss.molecules.field';
 import Button from '@bit/guya-ltd.gcss.atoms.button';
 import Blockquote from '@bit/guya-ltd.gcss.molecules.blockquote';
 
-import Authorization from 'hocs/Authorization';
+import LoginHoc from 'hocs/LoginHoc';
 import I18n from 'I18n';
 
 const { REACT_APP_GATEKEEPER_URL } = process.env;
@@ -24,6 +25,8 @@ const LOGIN_URL = REACT_APP_GATEKEEPER_URL + '/api/v1/sessions'
 const Login = (props) => {
     /* Localization */
     const locale = props.match.params.locale;
+
+    const cookies = new Cookies();
 
     /* Rest API Authenticator function */
     const auth = ([email, password], { signal }) => 
@@ -35,14 +38,20 @@ const Login = (props) => {
             })
         }, signal)
         .then(response => {
-            if(response.status == 200)
-                return response.json();
+            if(response.status == 201)
+                // Resturn stream response data
+                return response.json()
             else
                 setLoginError(true)
         })
         .then(data => { 
-            setEmail(email);
-            console.log(data)
+            // Save the token and redirect
+            if(data.token != null) {
+                cookies.set('loged_in', true, { path: '/' });
+                cookies.set('token', data.token, { path: '/' });
+                setLoginRedirect(true)
+            } else 
+                setLoginError(true)
         } );
     
 
@@ -57,6 +66,9 @@ const Login = (props) => {
 
     /* Login Erro */
     const [loginError, setLoginError] = useState(false);
+
+    /* Login Redirect */
+    const [loginRedirect, setLoginRedirect] = useState(false);
 
     const handleLogin = event => {
         event.preventDefault();
@@ -96,6 +108,7 @@ const Login = (props) => {
                                 body={ <I18n t="auth.login_failed_description" /> }
                               />
                 }
+                {loginRedirect && <Redirect to={`/${locale}/home/dashboards`} />}
                 <Formcontrol onSubmit={handleLogin}>
                     <Field
                         type='text'
@@ -137,4 +150,4 @@ const Login = (props) => {
 }
 
 
-export default Authorization(Login);
+export default LoginHoc(Login);
