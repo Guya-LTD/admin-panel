@@ -19,13 +19,15 @@ import I18n from 'I18n';
 const { REACT_APP_GATEKEEPER_URL } = process.env;
 
 const LOGIN_URL = REACT_APP_GATEKEEPER_URL + '/api/v1/sessions'
+const base = '/:locale(en|am)?';
+const Login = (props) => {
+    /* Localization */
+    const locale = props.match.params.locale;
 
-const Login = () => {
     /* Rest API Authenticator function */
     const auth = ([email, password], { signal }) => 
         fetch(LOGIN_URL, {
             method: "POST",
-            //headers: { 'Access-Control-Allow-Origin': 'http://localhost:3000'},
             body: JSON.stringify({
                 'identity': email,
                 'password': password
@@ -74,7 +76,7 @@ const Login = () => {
             header={ loginHeader }
             footer={ loginFooter }>
             <Card>
-                {error && <Redirect push to="/error?status_code=500&stack_trace=L1" />}
+                {error && <Redirect push to={`/${locale}/error?status_code=500&stack_trace=L1`} />}
                 {!isPending || '....'}
                 <Formcontrol onSubmit={handleLogin}>
                     <Field

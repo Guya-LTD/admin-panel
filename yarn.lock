@@ -1227,6 +1227,14 @@
     prop-types "15.7.2"
     react "^16.13.1"
 
+"@bit/guya-ltd.gcss.templates.httperror@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/guya-ltd.gcss.templates.httperror/-/guya-ltd.gcss.templates.httperror-0.0.1.tgz#7b3e7a10f92e44a008f87ef3b47adc766e6aeb72"
+  integrity sha1-ez56EPkuRKAI+H7ztHrcdm5q63I=
+  dependencies:
+    prop-types "15.7.2"
+    react "^16.13.1"
+
 "@bit/guya-ltd.gcss.templates.landing.login@^0.0.7":
   version "0.0.7"
   resolved "https://node.bit.dev/guya-ltd.gcss.templates.landing.login/-/guya-ltd.gcss.templates.landing.login-0.0.7.tgz#d0b7240804e225b2ccdf313560438e1958ae3ebc"
