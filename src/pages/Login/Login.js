@@ -3,6 +3,7 @@ import { useAsync } from 'react-async';
 import { NavLink } from 'react-router-i18n';
 import { IconContext } from "react-icons";
 import { IoIosMail, IoIosLock } from "react-icons/io";
+import { Redirect } from 'react-router-dom';
 
 import LoginTemplate from '@bit/guya-ltd.gcss.templates.landing.login';
 import Card from '@bit/guya-ltd.gcss.organisms.card';
@@ -15,7 +16,9 @@ import Button from '@bit/guya-ltd.gcss.atoms.button';
 import Authorization from 'hocs/Authorization';
 import I18n from 'I18n';
 
-const LOGIN_URL = (process.env.GATEKEEPERS_URL || 'http://127.0.0.1:3000') + '/api/sessions'
+const { REACT_APP_GATEKEEPER_URL } = process.env;
+
+const LOGIN_URL = REACT_APP_GATEKEEPER_URL + '/api/v1/sessions'
 
 const Login = () => {
     /* Rest API Authenticator function */
@@ -28,12 +31,14 @@ const Login = () => {
                 'password': password
             })
         }, signal)
-        .then(response => response.json())
-        .then(data => console.log(data));
+        .then(response => {
+            return response.json() 
+        })
+        .then(data => setEmail(data.token) );
     
 
     /* Async api call */
-    const { isPending, error, run, data } = useAsync({ deferFn: auth })
+    const { isPending, error, run } = useAsync({ deferFn: auth })
 
     /* State hooks */
     const [email, setEmail] = useState("");
@@ -51,7 +56,7 @@ const Login = () => {
     let loginHeader = <Logo href='/' src='/images/admin-panel-logo.png' size='lg' />
 
     let loginFooter = {
-        left: <I18n t="login.forget_password" />,
+        left: null,
         right: 
             <div>
                 <NavLink ignoreLocale to="/en/login">
@@ -69,7 +74,8 @@ const Login = () => {
             header={ loginHeader }
             footer={ loginFooter }>
             <Card>
-                {error && <p>{error.message}</p>}
+                {error && <Redirect push to="/error?status_code=500&stack_trace=L1" />}
+                {!isPending || '....'}
                 <Formcontrol onSubmit={handleLogin}>
                     <Field
                         type='text'
@@ -97,7 +103,7 @@ const Login = () => {
                                 left: <IconContext.Provider value={{ className: "icon" }}>
                                         <div><IoIosLock /></div>
                                       </IconContext.Provider>,
-                                right: <Link theme='royal-blue'>Forget?</Link>
+                                right: <Link theme='royal-blue'><I18n t="credential.forget_password" /></Link>
                             } 
                         }
                         value={password} 
