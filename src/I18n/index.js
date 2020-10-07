@@ -10,6 +10,8 @@ import httpEn from './en/http';
 import httpAm from './am/http';
 import authEn from './en/auth';
 import authAm from './am/auth';
+import menuEn from './en/menu';
+import menuAm from './am/menu';
 
 // Array of supported locales
 // The first in the array is treated as the default locale
@@ -22,6 +24,7 @@ const translations = {
         form: formEn,
         http: httpEn,
         auth: authEn,
+        menu: menuEn
     },
     am: {
         app: appAm,
@@ -29,6 +32,7 @@ const translations = {
         form: formAm,
         http: httpAm,
         auth: authAm,
+        menu: menuAm
     }
 }
 

@@ -24,7 +24,7 @@ const LOGIN_URL = REACT_APP_GATEKEEPER_URL + '/api/v1/sessions'
 
 const Login = (props) => {
     /* Localization */
-    const locale = props.match.params.locale;
+    const locale = props.match.params.locale == null ? 'en' : props.match.params.locale;
 
     const cookies = new Cookies();
 

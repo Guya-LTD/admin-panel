@@ -1218,6 +1218,16 @@
     prop-types "15.7.2"
     react "^16.13.1"
 
+"@bit/guya-ltd.gcss.molecules.sidebar@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/guya-ltd.gcss.molecules.sidebar/-/guya-ltd.gcss.molecules.sidebar-0.0.1.tgz#053f4c5d6177b95157a5034ae79eedf42514e777"
+  integrity sha1-BT9MXWF3uVFXpQNK557t9CUU53c=
+  dependencies:
+    "@bem-react/classname" "^1.5.8"
+    "@bem-react/classnames" "^1.3.9"
+    prop-types "15.7.2"
+    react "^16.13.1"
+
 "@bit/guya-ltd.gcss.organisms.card@^0.0.2":
   version "0.0.2"
   resolved "https://node.bit.dev/guya-ltd.gcss.organisms.card/-/guya-ltd.gcss.organisms.card-0.0.2.tgz#029e370994d531fa2139d7a6d620b1977aa069d7"
@@ -1232,6 +1242,15 @@
   version "0.0.1"
   resolved "https://node.bit.dev/guya-ltd.gcss.organisms.formcontrol/-/guya-ltd.gcss.organisms.formcontrol-0.0.1.tgz#508cfc3cffc27f7b0efd6662c1bcdefca20ee256"
   integrity sha1-UIz8PP/Cf3sO/WZiwbze/KIO4lY=
+  dependencies:
+    "@bem-react/classname" "^1.5.8"
+    prop-types "15.7.2"
+    react "^16.13.1"
+
+"@bit/guya-ltd.gcss.templates.home.panel@^0.0.3":
+  version "0.0.3"
+  resolved "https://node.bit.dev/guya-ltd.gcss.templates.home.panel/-/guya-ltd.gcss.templates.home.panel-0.0.3.tgz#238963267ec40c351006ee771cb6880fc1c6fe0a"
+  integrity sha1-I4ljJn7EDDUQBu53HLaID8HG/go=
   dependencies:
     "@bem-react/classname" "^1.5.8"
     prop-types "15.7.2"
