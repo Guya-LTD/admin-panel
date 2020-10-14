@@ -1,5 +1,7 @@
 const menu = {
-    dashboard: "Dashboard"
+    all: 'All',
+    dashboard: 'Dashboard',
+    sales: 'Sales'
 }
 
 export default menu;
