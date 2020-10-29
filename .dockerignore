@@ -1,4 +1,1 @@
-build
-.dockerignore
-Dockerfile
-Dockerfile.prod
+.git
