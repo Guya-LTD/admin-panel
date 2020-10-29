@@ -1,15 +1,13 @@
 ########################################################
 # Development build                                    #
 ########################################################
-FROM guyaltd/admin-panel:build  AS development
+FROM node:13.12.0-alpine  AS development
 
 ENV WORK_DIR /usr/src/app
 WORKDIR ${WORK_DIR}
 
-COPY . ./
+COPY . .
 
 CMD CI=true yarn start 
 
 EXPOSE 3000
-
-
