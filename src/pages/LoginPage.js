@@ -28,6 +28,10 @@ const Login = (props) => {
 
     const cookies = new Cookies();
 
+    const EXPIRE_DATE = 30; // 30 Days
+
+    const expires = new Date(Date.now() + EXPIRE_DATE * 24 * 60 * 60 * 1000)
+
     /* Rest API Authenticator function */
     const auth = ([email, password], { signal }) => 
         fetch(LOGIN_URL, {
@@ -47,8 +51,8 @@ const Login = (props) => {
         .then(data => { 
             // Save the token and redirect
             if(data.token != null) {
-                cookies.set('loged_in', true, { path: '/' });
-                cookies.set('token', data.token, { path: '/' });
+                cookies.set('loged_in', true, { path: '/', expires:  expires });
+                cookies.set('token', data.token, { path: '/', expires:  expires });
                 setLoginRedirect(true)
             } else 
                 setLoginError(true)
