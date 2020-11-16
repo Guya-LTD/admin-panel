@@ -7,6 +7,7 @@ import {
 
 import IndexPage from 'pages/IndexPage';
 import LoginPage from 'pages/LoginPage';
+import ForgetPage from 'pages/ForgetPage';
 import Error404Page from 'pages/Error404Page';
 import Error500Page from 'pages/Error500Page';
 import HomeDashboard from 'pages/home/Dashboard';
@@ -18,10 +19,11 @@ const base = '/:locale(en|am)?';
 // <Route path='/home/dashboards/support' component={LoginPage} />
 // {`${base}/login`}
 const ServiceRoute = () => (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/" component={IndexPage} />
           <Route path="/:locale(en|am)?/login" component={LoginPage} />
+          <Route path="/:locale(en|am)?/forget" component={ForgetPage} />
           <Route exact path='/:locale(en|am)?/home/dashboards' component={HomeDashboard} />
           <Route exact path='/:locale(en|am)?/home/users' component={HomeUsersView} />
           <Route path="/:locale(en|am)?/error" component={Error500Page} />

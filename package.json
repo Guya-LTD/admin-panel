@@ -2,6 +2,7 @@
   "name": "admin-panel",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/admin-panel",
   "dependencies": {
     "@bit/guya-ltd.gcss.atoms.button": "^0.0.4",
     "@bit/guya-ltd.gcss.atoms.link": "^0.0.4",
@@ -20,12 +21,12 @@
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.13.1",
     "react-async": "^10.0.1",
-    "react-base-table": "^1.11.3",
     "react-dom": "^16.13.1",
-    "react-icons": "^3.11.0",
+    "react-ionicons-icon": "^0.1.1",
     "react-router-dom": "^5.2.0",
     "react-router-i18n": "^1.0.0",
     "react-scripts": "3.4.1",
+    "react-table": "^7.6.2",
     "universal-cookie": "^4.0.4"
   },
   "devDependencies": {

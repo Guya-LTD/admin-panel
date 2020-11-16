@@ -4,12 +4,11 @@ import Sidebar from '@bit/guya-ltd.gcss.molecules.sidebar';
 import PanelTemplate from '@bit/guya-ltd.gcss.templates.home.panel';
 import Logo from '@bit/guya-ltd.gcss.molecules.logo';
 import Link from '@bit/guya-ltd.gcss.atoms.link';
-import { IconContext } from "react-icons";
-import { 
-    IoIosArrowDown, 
-    IoIosArrowUp, 
-    IoIosTrendingUp, 
-    IoIosRadioButtonOff } from "react-icons/io";
+import {
+    ChevronUpOutline,
+    ChevronDownOutline,
+    LayersOutline
+}from 'react-ionicons-icon';
 
 import Authorization from 'hocs/Authorization';
 import I18n from 'I18n';
@@ -40,9 +39,9 @@ const Index = (props) => {
             type: 'faciliter',
             faciliter: {
                 text: <I18n t='menu.dashboard' />,
-                icon: <IconContext.Provider value={{ className: "icon icon--sm" }}> <IoIosTrendingUp /> </IconContext.Provider>,
-                open: <IconContext.Provider value={{ className: "icon icon--sm" }}> <IoIosArrowDown /> </IconContext.Provider>,
-                close: <IconContext.Provider value={{ className: "icon icon--sm" }}> <IoIosArrowUp /> </IconContext.Provider>
+                icon: <LayersOutline size="20px" />,
+                open: <ChevronDownOutline size="20px" />,
+                close: <ChevronUpOutline size="20px" />
             }
         },
         {
