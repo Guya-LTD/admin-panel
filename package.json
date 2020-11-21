@@ -30,7 +30,7 @@
     "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
-    "commitizen": "^4.1.2",
+    "commitizen": "^4.2.2",
     "semantic-release": "^17.1.1"
   },
   "scripts": {
