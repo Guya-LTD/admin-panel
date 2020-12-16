@@ -62,6 +62,8 @@ const Login = (props) => {
                 if(data.data.token != null) {
                     console.log("Enteredd");
                     cookies.set('loged_in', true, { path: '/admin-panel', expires:  expires });
+                    cookies.set('email', email, { path: '/admin-panel', expires:  expires });
+                    cookies.set('name', email.split('@')[0], { path: '/admin-panel', expires:  expires });
                     cookies.set('token', data.data.token, { path: '/admin-panel', expires:  expires });
                     setLoginRedirect(true)
                 } else {

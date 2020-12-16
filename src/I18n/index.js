@@ -24,7 +24,9 @@ const translations = {
         form: formEn,
         http: httpEn,
         auth: authEn,
-        menu: menuEn
+        menu: menuEn,
+        'reviews': 'Reviews',
+        'logout': 'Logout'
     },
     am: {
         app: appAm,
@@ -32,7 +34,9 @@ const translations = {
         form: formAm,
         http: httpAm,
         auth: authAm,
-        menu: menuAm
+        menu: menuAm,
+        'reviews': 'ግምገማዎች',
+        'logout': 'ውጣ'
     }
 }
 

@@ -1,13 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+import { Redirect, Link as RouterLink } from 'react-router-dom';
+import { NavLink } from 'react-router-i18n';
 import List from '@bit/guya-ltd.gcss.molecules.list';
 import Sidebar from '@bit/guya-ltd.gcss.molecules.sidebar';
 import PanelTemplate from '@bit/guya-ltd.gcss.templates.home.panel';
 import Logo from '@bit/guya-ltd.gcss.molecules.logo';
 import Link from '@bit/guya-ltd.gcss.atoms.link';
+import Dropdown from '@bit/guya-ltd.gcss.molecules.dropdown';
+import Avatar from '@bit/guya-ltd.gcss.atoms.avatar';
+import ProfileLink from '@bit/guya-ltd.gcss.molecules.profilelink';
+import Cookies from 'universal-cookie';
 import {
     ChevronUpOutline,
     ChevronDownOutline,
-    LayersOutline
+    LayersOutline,
+    Language,
+    LogOutOutline,
+    AnalyticsOutline,
+    Search as SearchIcon,
+    Star,
+    ChatboxEllipsesOutline
 }from 'react-ionicons-icon';
 
 import Authorization from 'hocs/Authorization';
@@ -15,16 +27,68 @@ import I18n from 'I18n';
 
 const Index = (props) => {
     /* Props */
-    const {header, body, footer} = props;
+    const {header, body, footer, children, locale, route_location} = props;
+
+    const cookies = new Cookies();
+
+    /* State hooks */
+    const [logoutRedirect, setLogoutredirect] = useState(false);
+
+    const logoutFun = () => {
+        cookies.remove('loged_in', { path: '/admin-panel' })
+        cookies.remove('email', { path: '/admin-panel' })
+        cookies.remove('name', { path: '/admin-panel' })
+        cookies.remove('token', { path: '/admin-panel' })
+        /*
+        cookies.set('loged_in', false, { path: '/admin-panel' })
+        cookies.set('email', '', { path: '/admin-panel' })
+        cookies.set('name', '', { path: '/admin-panel' })
+        cookies.set('token', '', { path: '/admin-panel' })
+        */
+        setLogoutredirect(true);
+    }
 
     /* Sidebar logo */
-    const sidebarPrimaryMenuLogo = <Logo src='/images/admin-panel-logo-outline.png' size='xs' />
+    const sidebarPrimaryMenuLogo = <Logo src={process.env.PUBLIC_URL + '/images/admin-panel-logo-outline.png'} size='xs' />
 
     /* Sidebar Top */
-    const sidebarPrimaryMenuTop = null
+    const sidebarPrimaryMenuTop = <>
+                                <Dropdown
+                                        type="is-hoverable is-up is-artl"
+                                        trigger={
+                                            <Language fill="white" />
+                                        }
+                                    >
+                                        <NavLink ignoreLocale to= { "/en" + route_location } className="link link--md theme-royal-blue dropdown-item">
+                                            English
+                                        </NavLink>
+                                        <NavLink ignoreLocale to={ "/am" + route_location } className="link link--md theme-royal-blue dropdown-item">
+                                            እማርኛ
+                                        </NavLink>
+                                    </Dropdown>
+    </>
 
     /* Sidebar Bottom */
-    const sidebarPrimaryMenuBottom = null
+    const sidebarPrimaryMenuBottom = <>
+                                <Dropdown
+                                        type="is-hoverable is-up is-artl"
+                                        trigger={
+                                            <Avatar src={process.env.PUBLIC_URL + '/images/no-photo.svg'} />
+                                        }
+                                    >
+                                        <ProfileLink
+                                            theme="royal-blue"
+                                            photo={ <Avatar src={process.env.PUBLIC_URL + '/images/no-photo.svg'}  size="sm" /> }
+                                            name={cookies.get('name')}
+                                            description={cookies.get('email')}
+                                            cls="dropdown-item"
+                                        />
+                                        <Link theme="royal-blue" cls="dropdown-item" onClick={logoutFun}>
+                                            <span><LogOutOutline size="18px" /></span>
+                                            <I18n t="logout" />
+                                        </Link>
+                                    </Dropdown>
+    </>
 
     /* Sidebar Primay Menu */
     const sidebarPrimaryMenu = {
@@ -51,7 +115,13 @@ const Index = (props) => {
                 <Link size='sm' theme='royal-blue'> <I18n t='menu.sales' /> </Link>
             ]
         },
-        
+        { 
+            type: 'single', 
+            list: <RouterLink to={'/' + locale + '/home/reviews'} className="link link--sm theme-royal-blue">
+                    <span><ChatboxEllipsesOutline size="20px" /></span>
+                    Reviews
+                  </RouterLink>
+        }
     ]
 
     /* Sidebar Secondary Menu */
@@ -72,7 +142,8 @@ const Index = (props) => {
             header={header}
             footer={footer}
             >
-            {body}
+            {logoutRedirect && <Redirect to='/' />}
+            {children}
         </PanelTemplate>
     )
 }

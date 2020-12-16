@@ -1158,6 +1158,15 @@
   resolved "https://registry.yarnpkg.com/@bem-react/classnames/-/classnames-1.3.9.tgz#d5b4608b0d595b1946281e9acd4720f841e0c5e0"
   integrity sha512-hKKXsYU3SrKtQsGO5c3WkcpxPHTwSFvmjPjLUUJ/8C1dYJiQ6FweEUpLyrVRIO8amTjZD47xG8WRe/To6/4ayA==
 
+"@bit/guya-ltd.gcss.atoms.avatar@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/guya-ltd.gcss.atoms.avatar/-/guya-ltd.gcss.atoms.avatar-0.0.1.tgz#5cd0fb61cfbbaba57f8580a94d8ab7ea8e07371b"
+  integrity sha1-XND7Yc+7q6V/hYCpTYq36o4HNxs=
+  dependencies:
+    "@bem-react/classname" "^1.5.8"
+    prop-types "15.7.2"
+    react "^16.13.1"
+
 "@bit/guya-ltd.gcss.atoms.button@^0.0.4":
   version "0.0.4"
   resolved "https://node.bit.dev/guya-ltd.gcss.atoms.button/-/guya-ltd.gcss.atoms.button-0.0.4.tgz#643ab245d5f10221f34c8d62a402edbc424d3387"
@@ -1168,20 +1177,20 @@
     prop-types "15.7.2"
     react "^16.13.1"
 
-"@bit/guya-ltd.gcss.atoms.input@0.0.4":
-  version "0.0.4"
-  resolved "https://node.bit.dev/guya-ltd.gcss.atoms.input/-/guya-ltd.gcss.atoms.input-0.0.4.tgz#57ccfa471260cb68f55e9ae4a7045b43697940e0"
-  integrity sha1-V8z6RxJgy2j1XprkpwRbQ2l5QOA=
+"@bit/guya-ltd.gcss.atoms.input@0.0.5":
+  version "0.0.5"
+  resolved "https://node.bit.dev/guya-ltd.gcss.atoms.input/-/guya-ltd.gcss.atoms.input-0.0.5.tgz#a749b4405cde5139d175b939f318137bac10309f"
+  integrity sha1-p0m0QFzeUTnRdbk58xgTe6wQMJ8=
   dependencies:
     "@bem-react/classname" "^1.5.8"
     "@bem-react/classnames" "^1.3.9"
     prop-types "15.7.2"
     react "^16.13.1"
 
-"@bit/guya-ltd.gcss.atoms.link@^0.0.4":
-  version "0.0.4"
-  resolved "https://node.bit.dev/guya-ltd.gcss.atoms.link/-/guya-ltd.gcss.atoms.link-0.0.4.tgz#39b8d3524b334360a134034ca1e3a47f7fd60c58"
-  integrity sha1-ObjTUkszQ2ChNANMoeOkf3/WDFg=
+"@bit/guya-ltd.gcss.atoms.link@^0.0.8":
+  version "0.0.6"
+  resolved "https://node.bit.dev/guya-ltd.gcss.atoms.link/-/guya-ltd.gcss.atoms.link-0.0.6.tgz#43432aad7318b6772d777a63d7eda871bf48164b"
+  integrity sha1-Q0MqrXMYtnctd3pj1+2ocb9IFks=
   dependencies:
     "@bem-react/classname" "^1.5.8"
     "@bem-react/classnames" "^1.3.9"
@@ -1198,21 +1207,31 @@
     prop-types "15.7.2"
     react "^16.13.1"
 
-"@bit/guya-ltd.gcss.molecules.field@^0.0.7":
-  version "0.0.7"
-  resolved "https://node.bit.dev/guya-ltd.gcss.molecules.field/-/guya-ltd.gcss.molecules.field-0.0.7.tgz#ffdea15249959481a291866eb9524a12a24ba2ec"
-  integrity sha1-/96hUkmVlIGikYZuuVJKEqJLouw=
+"@bit/guya-ltd.gcss.molecules.dropdown@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/guya-ltd.gcss.molecules.dropdown/-/guya-ltd.gcss.molecules.dropdown-0.0.1.tgz#bd1eb4d400c844fe77ec05e373d22255a919e6a4"
+  integrity sha1-vR601ADIRP537AXjc9IiVakZ5qQ=
   dependencies:
     "@bem-react/classname" "^1.5.8"
     "@bem-react/classnames" "^1.3.9"
-    "@bit/guya-ltd.gcss.atoms.input" "0.0.4"
     prop-types "15.7.2"
     react "^16.13.1"
 
-"@bit/guya-ltd.gcss.molecules.list@^0.0.1":
-  version "0.0.1"
-  resolved "https://node.bit.dev/guya-ltd.gcss.molecules.list/-/guya-ltd.gcss.molecules.list-0.0.1.tgz#cfd131f824c5e741c0ec8fd9c558e961a1cfcc29"
-  integrity sha1-z9Ex+CTF50HA7I/ZxVjpYaHPzCk=
+"@bit/guya-ltd.gcss.molecules.field@^0.0.9":
+  version "0.0.9"
+  resolved "https://node.bit.dev/guya-ltd.gcss.molecules.field/-/guya-ltd.gcss.molecules.field-0.0.9.tgz#d66c360fbbe277ff179e5fc541162897a0c3c597"
+  integrity sha1-1mw2D7vid/8Xnl/FQRYol6DDxZc=
+  dependencies:
+    "@bem-react/classname" "^1.5.8"
+    "@bem-react/classnames" "^1.3.9"
+    "@bit/guya-ltd.gcss.atoms.input" "0.0.5"
+    prop-types "15.7.2"
+    react "^16.13.1"
+
+"@bit/guya-ltd.gcss.molecules.list@^0.0.3":
+  version "0.0.3"
+  resolved "https://node.bit.dev/guya-ltd.gcss.molecules.list/-/guya-ltd.gcss.molecules.list-0.0.3.tgz#2da0ce3282a9f2ea5210408d922ef3ac54626d43"
+  integrity sha1-LaDOMoKp8upSEECNki7zrFRibUM=
   dependencies:
     "@bem-react/classname" "^1.5.8"
     "@bem-react/classnames" "^1.3.9"
@@ -1228,6 +1247,16 @@
     prop-types "15.7.2"
     react "^16.13.1"
 
+"@bit/guya-ltd.gcss.molecules.profilelink@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/guya-ltd.gcss.molecules.profilelink/-/guya-ltd.gcss.molecules.profilelink-0.0.1.tgz#cabc4f0e0747967a6d52e1b8a8170239c262fc7d"
+  integrity sha1-yrxPDgdHlnptUuG4qBcCOcJi/H0=
+  dependencies:
+    "@bem-react/classname" "^1.5.8"
+    "@bem-react/classnames" "^1.3.9"
+    prop-types "15.7.2"
+    react "^16.13.1"
+
 "@bit/guya-ltd.gcss.molecules.sidebar@^0.0.1":
   version "0.0.1"
   resolved "https://node.bit.dev/guya-ltd.gcss.molecules.sidebar/-/guya-ltd.gcss.molecules.sidebar-0.0.1.tgz#053f4c5d6177b95157a5034ae79eedf42514e777"
@@ -1238,10 +1267,10 @@
     prop-types "15.7.2"
     react "^16.13.1"
 
-"@bit/guya-ltd.gcss.organisms.card@^0.0.2":
-  version "0.0.2"
-  resolved "https://node.bit.dev/guya-ltd.gcss.organisms.card/-/guya-ltd.gcss.organisms.card-0.0.2.tgz#029e370994d531fa2139d7a6d620b1977aa069d7"
-  integrity sha1-Ap43CZTVMfohOdem1iCxl3qgadc=
+"@bit/guya-ltd.gcss.organisms.card@^0.0.3":
+  version "0.0.3"
+  resolved "https://node.bit.dev/guya-ltd.gcss.organisms.card/-/guya-ltd.gcss.organisms.card-0.0.3.tgz#6bef22336c6d73d7399a89c3c306b769412fed94"
+  integrity sha1-a+8iM2xtc9c5monDwwa3aUEv7ZQ=
   dependencies:
     "@bem-react/classname" "^1.5.8"
     "@bem-react/classnames" "^1.3.9"
@@ -1274,10 +1303,10 @@
     prop-types "15.7.2"
     react "^16.13.1"
 
-"@bit/guya-ltd.gcss.templates.landing.login@^0.0.7":
-  version "0.0.7"
-  resolved "https://node.bit.dev/guya-ltd.gcss.templates.landing.login/-/guya-ltd.gcss.templates.landing.login-0.0.7.tgz#d0b7240804e225b2ccdf313560438e1958ae3ebc"
-  integrity sha1-0LckCATiJbLM3zE1YEOOGViuPrw=
+"@bit/guya-ltd.gcss.templates.landing.login@^0.0.9":
+  version "0.0.9"
+  resolved "https://node.bit.dev/guya-ltd.gcss.templates.landing.login/-/guya-ltd.gcss.templates.landing.login-0.0.9.tgz#725ae0b66720c8658a82ec9486c12246b6994897"
+  integrity sha1-clrgtmcgyGWKguyUhsEiRraZSJc=
   dependencies:
     "@bem-react/classname" "^1.5.8"
     prop-types "15.7.2"
