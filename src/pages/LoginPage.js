@@ -58,10 +58,11 @@ const Login = (props) => {
         .then(data => {
             console.log(data);
             // Save the token and redirect
-            if(error != undefined){
-                if(data.token != null) {
-                    cookies.set('loged_in', true, { path: '/', expires:  expires });
-                    cookies.set('token', data.token, { path: '/', expires:  expires });
+            if(error == undefined){
+                if(data.data.token != null) {
+                    console.log("Enteredd");
+                    cookies.set('loged_in', true, { path: '/admin-panel', expires:  expires });
+                    cookies.set('token', data.data.token, { path: '/admin-panel', expires:  expires });
                     setLoginRedirect(true)
                 } else {
                     setLoginError(true);
