@@ -38,6 +38,7 @@ const Login = (props) => {
     const auth = ([email, password], { signal }) => 
         fetch(LOGIN_URL, {
             method: "POST",
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 'identity': email,
                 'password': password
