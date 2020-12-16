@@ -1187,7 +1187,7 @@
     prop-types "15.7.2"
     react "^16.13.1"
 
-"@bit/guya-ltd.gcss.atoms.link@^0.0.8":
+"@bit/guya-ltd.gcss.atoms.link@^0.0.6":
   version "0.0.6"
   resolved "https://node.bit.dev/guya-ltd.gcss.atoms.link/-/guya-ltd.gcss.atoms.link-0.0.6.tgz#43432aad7318b6772d777a63d7eda871bf48164b"
   integrity sha1-Q0MqrXMYtnctd3pj1+2ocb9IFks=
@@ -1286,15 +1286,6 @@
     prop-types "15.7.2"
     react "^16.13.1"
 
-"@bit/guya-ltd.gcss.templates.home.panel@^0.0.3":
-  version "0.0.3"
-  resolved "https://node.bit.dev/guya-ltd.gcss.templates.home.panel/-/guya-ltd.gcss.templates.home.panel-0.0.3.tgz#238963267ec40c351006ee771cb6880fc1c6fe0a"
-  integrity sha1-I4ljJn7EDDUQBu53HLaID8HG/go=
-  dependencies:
-    "@bem-react/classname" "^1.5.8"
-    prop-types "15.7.2"
-    react "^16.13.1"
-
 "@bit/guya-ltd.gcss.templates.httperror@^0.0.1":
   version "0.0.1"
   resolved "https://node.bit.dev/guya-ltd.gcss.templates.httperror/-/guya-ltd.gcss.templates.httperror-0.0.1.tgz#7b3e7a10f92e44a008f87ef3b47adc766e6aeb72"
@@ -1310,6 +1301,13 @@
   dependencies:
     "@bem-react/classname" "^1.5.8"
     prop-types "15.7.2"
+    react "^16.13.1"
+
+"@bit/guya-ltd.gcss.templates.panel@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/guya-ltd.gcss.templates.panel/-/guya-ltd.gcss.templates.panel-0.0.1.tgz#6fbeb1f5af8466cb2ddadce71b38d22cbf797b96"
+  integrity sha1-b76x9a+EZsst2tznGzjSLL95e5Y=
+  dependencies:
     react "^16.13.1"
 
 "@cnakazawa/watch@^1.0.3":

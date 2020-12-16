@@ -6,25 +6,21 @@ import {
     PanelContainerBody,
     PanelContainerFooter,
     PanelContainerView
-} from '@bit/guya-ltd.gcss.templates.home.panel';
+} from '@bit/guya-ltd.gcss.templates.panel';
 import I18n from 'I18n';
 
-const View = () => {
-    /* Users View Header */
-    const header = <p>Users view header</p>
+const View = (props) => {
+    /* Localization */
+    const locale = props.match.params.locale == null ? 'en' : props.match.params.locale;
 
-    /* Users View Body */
-    const body = <p> Users body</p>
-
-    /* Users View Footer */
-    const footer = <p>Users Footer</p>
-    
     return (
         <HomeLayout
-            header={header}
-            footer={footer}
+            locale={locale}
+            route_location='/home/reviews'
         >
-            Review
+            
+                Review
+            
         </HomeLayout>
     )
 }

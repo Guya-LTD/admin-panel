@@ -1,9 +1,9 @@
 import React, { Component, useState } from 'react';
-import { Redirect, Link as RouterLink } from 'react-router-dom';
+import { Redirect, NavLink as RouterNavLink } from 'react-router-dom';
 import { NavLink } from 'react-router-i18n';
 import List from '@bit/guya-ltd.gcss.molecules.list';
 import Sidebar from '@bit/guya-ltd.gcss.molecules.sidebar';
-import PanelTemplate from '@bit/guya-ltd.gcss.templates.home.panel';
+import PanelTemplate from '@bit/guya-ltd.gcss.templates.panel';
 import Logo from '@bit/guya-ltd.gcss.molecules.logo';
 import Link from '@bit/guya-ltd.gcss.atoms.link';
 import Dropdown from '@bit/guya-ltd.gcss.molecules.dropdown';
@@ -27,7 +27,7 @@ import I18n from 'I18n';
 
 const Index = (props) => {
     /* Props */
-    const {header, body, footer, children, locale, route_location} = props;
+    const {footer, children, locale, route_location} = props;
 
     const cookies = new Cookies();
 
@@ -117,10 +117,10 @@ const Index = (props) => {
         },
         { 
             type: 'single', 
-            list: <RouterLink to={'/' + locale + '/home/reviews'} className="link link--sm theme-royal-blue">
+            list: <RouterNavLink to={'/' + locale + '/home/reviews'} activeClassName="active" className={route_location == '/home/reviews' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
                     <span><ChatboxEllipsesOutline size="20px" /></span>
                     Reviews
-                  </RouterLink>
+                  </RouterNavLink>
         }
     ]
 
@@ -139,8 +139,6 @@ const Index = (props) => {
     return (
         <PanelTemplate
             sidebar={sidebar}
-            header={header}
-            footer={footer}
             >
             {logoutRedirect && <Redirect to='/' />}
             {children}
