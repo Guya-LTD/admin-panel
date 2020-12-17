@@ -29,7 +29,7 @@ const View = (props) => {
 
     const headers = { Accept: 'application/json' }
 
-    const { data, error, isPending, run } = useFetch(USERS_URL + '?limit=20&page=' + page, { headers })
+    const { data, error, isPending, run } = useFetch(USERS_URL + '?limit=10&page=' + page, { headers })
 
     /*useEffect(() => {
         run()
@@ -71,9 +71,23 @@ const View = (props) => {
         ]
     )
 
+    const pageOne = event => {
+        event.preventDefault();
+        setPage(1);
+        run();
+    }
+
+    const pageBack = event => {
+        event.preventDefault();
+        if(page >= 2) {
+            setPage(page - 1);
+            run();
+        }
+    }
+
     const nextPage = event => {
         event.preventDefault();
-        setPage(3)
+        setPage(page + 1);
         run()
     }
 
@@ -111,13 +125,20 @@ const View = (props) => {
                         {/* Pagination */}
                         <div style={{marginTop: "35px"}}>
                             <div class="pagination">
-                                <a class="pagination__control" href="#">&laquo;</a>
+                                { /*page >= 2 ?  <a class="pagination__control" href="#" onClick={pageBack}>&laquo;</a> : ''*/}
+                                <a class="pagination__control" href="#" onClick={pageBack}>&laquo;</a>
                                 <div class="pagination__pages">
-                                    <a href="#" className={page == 1 ? 'active' : ''}>1</a>
                                     {/*<span class="pagination-ellipsis">&hellip;</span>*/}
-                                    {(data) || (data != undefined) ? <a href="#">{(data.pagination.count / data.pagination.limit)}</a> : ''}
+                                    {(data) || (data != undefined) ? 
+                                        <a href="#" className=''>
+                                            Page {data.pagination.page} of {Math.ceil((data.pagination.count / data.pagination.limit))}
+                                            &nbsp; | &nbsp; out of {data.pagination.count}
+                                        </a> 
+                                        : 
+                                        ''
+                                    }
                                 </div>
-                                <a class="pagination__control" href="#">&raquo;</a>
+                                <a class="pagination__control" href="#" onClick={nextPage}>&raquo;</a>
                             </div>
                         </div>
                         {/* End of Pagination */}
