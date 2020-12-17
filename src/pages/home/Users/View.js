@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import Search from '@bit/guya-ltd.gcss.atoms.search';
-import Typography from '@bit/guya-ltd.gcss.atoms.typography';
-import Tip from '@bit/guya-ltd.gcss.atoms.tip';
+import React, { useEffect, useState, useMemo } from 'react';
+import HomeLayout from 'pages/home/Index';
 import {
     PanelContainer,
     PanelContainerHeader,
@@ -12,41 +10,75 @@ import {
 import {
     Search as SearchIcon,
 } from 'react-ionicons-icon';
-import HomeLayout from 'pages/home/Index';
+import Tip from '@bit/guya-ltd.gcss.atoms.tip';
+import Search from '@bit/guya-ltd.gcss.atoms.search';
+import Typography from '@bit/guya-ltd.gcss.atoms.typography';
+import { useFetch, useAsync } from 'react-async';
 import I18n from 'I18n';
-import Async, { useAsync } from 'react-async';
+import TableContainer from 'pages/TableContainer';
 
 const { REACT_APP_API_GATEWAY } = process.env;
-
 const USERS_URL = REACT_APP_API_GATEWAY + '/api/v1/users';
-
-
-const asyncRetriveUsersList = async({ page }, { signal }) => {
-    const res = await fetch(USERS_URL + '?limit=20&' + 'page=' + page, { signal })
-    if(!res.ok) throw new Error(res.statusText)
-    alert(page)
-    return res.json()
-}
-
-const asyncRetriveUsersListPage = ([page], { signal }) => {
-    const res = fetch(USERS_URL + '?limit=20&', { signal })
-    if(!res.ok) throw new Error(res.statusText)
-    console.log(res)
-    return res.json()
-}
 
 
 const View = (props) => {
     /* Localization */
     const locale = props.match.params.locale == null ? 'en' : props.match.params.locale;
-
+    
     const [page, setPage] = useState(1);
 
+    const headers = { Accept: 'application/json' }
+
+    const { data, error, isPending, run } = useFetch(USERS_URL + '?limit=20&page=' + page, { headers })
+
+    /*useEffect(() => {
+        run()
+    })*/
+
+    const columns = useMemo(
+        () => [
+            {
+                Header: <I18n t="date" />,
+                accessor: 'created_at'
+            },
+            {
+                Header: <I18n t="email" />,
+                accessor: 'email'
+            },
+            {
+                Header: <I18n t="name" />,
+                accessor: 'name'
+            },
+            {
+                Header: <I18n t="phone_number" />,
+                accessor: 'pnum'
+            },
+            {
+                Header: <I18n t="role" />,
+                accessor: 'role.name'
+            },
+            {
+                Header: <I18n t="status" />,
+                accessor: 'credential.blocked',
+                Cell: ({ cell }) => {
+                    const { value } = cell;
+                    if(value)
+                        return <Tip theme="red" variant="red"><I18n t="blocked" /></Tip>
+                    else
+                        return <Tip theme="royal-blue" variant="green"><I18n t="active" /></Tip>
+                }
+            }
+        ]
+    )
+
+    const nextPage = event => {
+        event.preventDefault();
+        setPage(3)
+        run()
+    }
+
     return (
-        <HomeLayout
-            locale={locale}
-            route_location='/home/users'
-        >
+        <HomeLayout locale={locale} route_location='/home/users'>
             <PanelContainer>
                 <PanelContainerView>
                     <div className="row">
@@ -74,70 +106,26 @@ const View = (props) => {
                         {/* End of Top Header */}
                         <br /><br /><br /><br />
                         {/* Row Two */}
-                        <Async promiseFn={asyncRetriveUsersList} deferFn={asyncRetriveUsersListPage} page={page}>
-                                {({data, error, isPending, run }) => {
-                                    if(isPending) return "Loading..."
-                                    if(error) {console.log("Price Error: " + error.message); return "Error load again!";}
-                                    if(data)
-                                        return (
-                                            <>
-                                                <div className="row col-xs-12">
-                                                    <table class="table table--hoverable theme-royal-blue">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th><I18n t="date" /></th>
-                                                                    <th><I18n t="email" /></th>
-                                                                    <th><I18n t="name" /></th>
-                                                                    <th><I18n t="phone_number" /></th>
-                                                                    <th><I18n t="role" /></th>
-                                                                    <th><I18n t="status" /></th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                {data.data.map(function(user, index) {
-                                                                    return (
-                                                                        <tr>
-                                                                            <td>{user.created_at}</td>
-                                                                            <td>{user.email}</td>
-                                                                            <td>{user.name}</td>
-                                                                            <td>{user.pnum}</td>
-                                                                            <td>{user.role.name}</td>
-                                                                            <td>
-                                                                                {user.credential.blocked && <Tip theme="red" variant="red"><I18n t="blocked" /></Tip>}
-                                                                                {!user.credential.blocked && <Tip theme="royal-blue" variant="green"><I18n t="active" /></Tip>}
-                                                                            </td>
-                                                                        </tr>
-                                                                    )
-                                                                })}
-                                                            </tbody>
-                                                        </table>
-                                                </div>
-                                                {/* End of Row Two */}
-                                                {/* Pagination */}
-                                                <div style={{marginTop: "35px"}}>
-                                                    <div class="pagination">
-                                                        <a class="pagination__control" href="#">&laquo;</a>
-                                                        <div class="pagination__pages">
-                                                            <a href="#" className={page == 1 ? 'active' : ''}>1</a>
-                                                            {/*<span class="pagination-ellipsis">&hellip;</span>*/}
-                                                            <a href="#" onClick={() => {
-                                                                    run(2)
-                                                                    }} >{(data.pagination.count / data.pagination.limit)}</a>
-                                                        </div>
-                                                        <a class="pagination__control" href="#">&raquo;</a>
-                                                    </div>
-                                                </div>
-                                                {/* End of Pagination */}
-                                            </>
-                                        )
-                                }}
-                        </Async>
+                        {(data) || (data != undefined) ? <TableContainer columns={columns} data={data.data} /> : 'None'}
+                        {/* End of Row Two */}
+                        {/* Pagination */}
+                        <div style={{marginTop: "35px"}}>
+                            <div class="pagination">
+                                <a class="pagination__control" href="#">&laquo;</a>
+                                <div class="pagination__pages">
+                                    <a href="#" className={page == 1 ? 'active' : ''}>1</a>
+                                    {/*<span class="pagination-ellipsis">&hellip;</span>*/}
+                                    {(data) || (data != undefined) ? <a href="#">{(data.pagination.count / data.pagination.limit)}</a> : ''}
+                                </div>
+                                <a class="pagination__control" href="#">&raquo;</a>
+                            </div>
+                        </div>
+                        {/* End of Pagination */}
                     </div>
                 </PanelContainerView>
             </PanelContainer>
         </HomeLayout>
     )
 }
-
 
 export default View;
