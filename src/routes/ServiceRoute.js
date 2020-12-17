@@ -11,7 +11,8 @@ import ForgetPage from 'pages/ForgetPage';
 import Error404Page from 'pages/Error404Page';
 import Error500Page from 'pages/Error500Page';
 import HomeDashboard from 'pages/home/Dashboard';
-import HomeUsersView from 'pages/home/Users/View';
+import HomeUsersList from 'pages/home/Users/List';
+import HomeUserView from 'pages/home/Users/View';
 import HomeReviewView from 'pages/home/Review/View';
 
 // Match locales with regular expression containing each locale separated by `|`
@@ -26,7 +27,8 @@ const ServiceRoute = () => (
           <Route path="/:locale(en|am)?/login" component={LoginPage} />
           <Route path="/:locale(en|am)?/forget" component={ForgetPage} />
           <Route exact path='/:locale(en|am)?/home/dashboards' component={HomeDashboard} />
-          <Route exact path='/:locale(en|am)?/home/users' component={HomeUsersView} />
+          <Route exact path='/:locale(en|am)?/home/users' component={HomeUsersList} />
+          <Route exact path='/:locale(en|am)?/home/users/:id' component={HomeUserView} />
           <Route exact path='/:locale(en|am)?/home/reviews' component={HomeReviewView} />
           <Route path="/:locale(en|am)?/error" component={Error500Page} />
           <Route path="*" component={Error404Page} />

@@ -36,7 +36,9 @@ const translations = {
         'status': 'Status',
         'date': 'Date',
         'blocked': 'Blocked',
-        'active': 'Active'
+        'active': 'Active',
+        'account': 'Account',
+        'identity': 'Identity'
     },
     am: {
         app: appAm,
@@ -56,7 +58,9 @@ const translations = {
         'status': 'ሁኔታ',
         'date': 'ቀን',
         'blocked': 'ታግዷል',
-        'active': 'ክፈት'
+        'active': 'ክፈት',
+        'account': 'መለያ',
+        'identity': 'መለያ'
     }
 }
 
