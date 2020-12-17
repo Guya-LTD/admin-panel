@@ -18,8 +18,8 @@ import {
     LogOutOutline,
     AnalyticsOutline,
     Search as SearchIcon,
-    Star,
-    ChatboxEllipsesOutline
+    ChatboxEllipsesOutline,
+    PeopleOutline
 }from 'react-ionicons-icon';
 
 import Authorization from 'hocs/Authorization';
@@ -117,10 +117,18 @@ const Index = (props) => {
         },
         { 
             type: 'single', 
-            list: <RouterNavLink to={'/' + locale + '/home/reviews'} activeClassName="active" className={route_location == '/home/reviews' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
-                    <span><ChatboxEllipsesOutline size="20px" /></span>
-                    Reviews
-                  </RouterNavLink>
+            list: <>
+                    <RouterNavLink to={'/' + locale + '/home/users'} activeClassName="active" className={route_location == '/home/user' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
+                        <span><PeopleOutline size="20px" /></span>
+                            <I18n t="users" />
+                    </RouterNavLink>
+                    <br />
+                    <br />
+                    <RouterNavLink to={'/' + locale + '/home/reviews'} activeClassName="active" className={route_location == '/home/reviews' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
+                        <span><ChatboxEllipsesOutline size="20px" /></span>
+                        <I18n t="reviews" />
+                    </RouterNavLink>
+                </>
         }
     ]
 

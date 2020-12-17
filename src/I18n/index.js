@@ -26,7 +26,17 @@ const translations = {
         auth: authEn,
         menu: menuEn,
         'reviews': 'Reviews',
-        'logout': 'Logout'
+        'logout': 'Logout',
+        'users_list': 'Users List',
+        'users': 'Users',
+        'email': 'Email',
+        'name': 'Name',
+        'phone_number': 'Phone Number',
+        'role': 'Role',
+        'status': 'Status',
+        'date': 'Date',
+        'blocked': 'Blocked',
+        'active': 'Active'
     },
     am: {
         app: appAm,
@@ -36,7 +46,17 @@ const translations = {
         auth: authAm,
         menu: menuAm,
         'reviews': 'ግምገማዎች',
-        'logout': 'ውጣ'
+        'logout': 'ውጣ',
+        'users_list': 'የተጠቃሚዎች ዝርዝር',
+        'users': 'ተጠቃሚዎች',
+        'email': 'ኢሜል',
+        'name': 'ስም',
+        'phone_number': 'ስልክ ቁጥር',
+        'role': 'ሚና',
+        'status': 'ሁኔታ',
+        'date': 'ቀን',
+        'blocked': 'ታግዷል',
+        'active': 'ክፈት'
     }
 }
 

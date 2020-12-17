@@ -1197,6 +1197,37 @@
     prop-types "15.7.2"
     react "^16.13.1"
 
+"@bit/guya-ltd.gcss.atoms.search@^0.0.2":
+  version "0.0.2"
+  resolved "https://node.bit.dev/guya-ltd.gcss.atoms.search/-/guya-ltd.gcss.atoms.search-0.0.2.tgz#271b07e9fa7099a8415e87e5b22c72d57184919a"
+  integrity sha1-JxsH6fpwmahBXoflsixy1XGEkZo=
+  dependencies:
+    "@bem-react/classname" "^1.5.8"
+    "@bem-react/classnames" "^1.3.9"
+    "@bit/guya-ltd.gcss.atoms.input" "0.0.5"
+    prop-types "15.7.2"
+    react "^16.13.1"
+
+"@bit/guya-ltd.gcss.atoms.tip@^0.0.2":
+  version "0.0.2"
+  resolved "https://node.bit.dev/guya-ltd.gcss.atoms.tip/-/guya-ltd.gcss.atoms.tip-0.0.2.tgz#05f935fbd47fb8927b0c473cf3c89023743c4ab6"
+  integrity sha1-Bfk1+9R/uJJ7DEc888iQI3Q8SrY=
+  dependencies:
+    "@bem-react/classname" "^1.5.8"
+    "@bem-react/classnames" "^1.3.9"
+    prop-types "15.7.2"
+    react "^16.13.1"
+
+"@bit/guya-ltd.gcss.atoms.typography@^0.0.4":
+  version "0.0.4"
+  resolved "https://node.bit.dev/guya-ltd.gcss.atoms.typography/-/guya-ltd.gcss.atoms.typography-0.0.4.tgz#3b7074e4c5a7ee6802c8569b05219adf5934ef9c"
+  integrity sha1-O3B05MWn7mgCyFabBSGa31k075w=
+  dependencies:
+    "@bem-react/classname" "^1.5.8"
+    "@bem-react/classnames" "^1.3.9"
+    prop-types "15.7.2"
+    react "^16.13.1"
+
 "@bit/guya-ltd.gcss.molecules.blockquote@^0.0.2":
   version "0.0.2"
   resolved "https://node.bit.dev/guya-ltd.gcss.molecules.blockquote/-/guya-ltd.gcss.molecules.blockquote-0.0.2.tgz#16af7fc83b9212dfa520cef6a92ec2e179c835c4"
