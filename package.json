@@ -26,14 +26,17 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "apexcharts": "^3.23.0",
+    "ol": "^6.4.3",
     "react": "^16.13.1",
     "react-async": "^10.0.1",
+    "react-chat-elements": "^10.13.0",
     "react-dom": "^16.13.1",
     "react-ionicons-icon": "^0.1.1",
     "react-router-dom": "^5.2.0",
     "react-router-i18n": "^1.0.0",
     "react-scripts": "3.4.1",
     "react-table": "^7.6.2",
+    "socket.io-client": "^2.2.0",
     "universal-cookie": "^4.0.4"
   },
   "devDependencies": {

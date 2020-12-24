@@ -19,7 +19,10 @@ import {
     AnalyticsOutline,
     Search as SearchIcon,
     ChatboxEllipsesOutline,
-    PeopleOutline
+    PeopleOutline,
+    ChatbubblesOutline,
+    StorefrontOutline,
+    MapOutline
 }from 'react-ionicons-icon';
 
 import Authorization from 'hocs/Authorization';
@@ -124,9 +127,27 @@ const Index = (props) => {
                     </RouterNavLink>
                     <br />
                     <br />
+                    <RouterNavLink to={'/' + locale + '/home/chat'} activeClassName="active" className={route_location == '/home/reviews' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
+                        <span><ChatbubblesOutline size="20px" /></span>
+                        <I18n t="chat" />
+                    </RouterNavLink>
+                    <br />
+                    <br />
                     <RouterNavLink to={'/' + locale + '/home/reviews'} activeClassName="active" className={route_location == '/home/reviews' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
                         <span><ChatboxEllipsesOutline size="20px" /></span>
                         <I18n t="reviews" />
+                    </RouterNavLink>
+                    <br />
+                    <br />
+                    <RouterNavLink to={'/' + locale + '/home/branches'} activeClassName="active" className={route_location == '/home/branches' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
+                        <span><StorefrontOutline size="20px" /></span>
+                        <I18n t="branches" />
+                    </RouterNavLink>
+                    <br />
+                    <br />
+                    <RouterNavLink to={'/' + locale + '/home/tracking'} activeClassName="active" className={route_location == '/home/tracking' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
+                        <span><MapOutline size="20px" /></span>
+                        <I18n t="tracking" />
                     </RouterNavLink>
                 </>
         }
@@ -155,4 +176,5 @@ const Index = (props) => {
 }
 
 
-export default Authorization(Index);
+//export default Authorization(Index);
+export default Index;

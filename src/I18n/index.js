@@ -31,6 +31,8 @@ const translations = {
         'users': 'Users',
         'email': 'Email',
         'name': 'Name',
+        'name_en': 'Name/EN',
+        'name_am': 'Name/AM',
         'phone_number': 'Phone Number',
         'role': 'Role',
         'status': 'Status',
@@ -38,7 +40,18 @@ const translations = {
         'blocked': 'Blocked',
         'active': 'Active',
         'account': 'Account',
-        'identity': 'Identity'
+        'identity': 'Identity',
+        'chat': 'Chat',
+        'customer_support': 'Custommer Support',
+        'online': 'Online',
+        'ofline': 'Ofline',
+        'branches': 'Branches',
+        'open': 'Open',
+        'closed': 'Closed',
+        'company': 'Company',
+        'branches_list': 'Branches List',
+        'tracking': 'Tracking',
+        'vehicle_tracking': 'Vehicle Tracking'
     },
     am: {
         app: appAm,
@@ -53,6 +66,8 @@ const translations = {
         'users': 'ተጠቃሚዎች',
         'email': 'ኢሜል',
         'name': 'ስም',
+        'name_en': 'Name/EN',
+        'name_am': 'Name/AM',
         'phone_number': 'ስልክ ቁጥር',
         'role': 'ሚና',
         'status': 'ሁኔታ',
@@ -60,7 +75,18 @@ const translations = {
         'blocked': 'ታግዷል',
         'active': 'ክፈት',
         'account': 'መለያ',
-        'identity': 'መለያ'
+        'identity': 'መለያ',
+        'chat': 'ቻት',
+        'customer_support': 'የደንበኛ ድጋፍ',
+        'online': 'Online',
+        'ofline': 'Ofline',
+        'branches': 'Branches',
+        'open': 'Open',
+        'closed': 'Closed',
+        'company': 'Company',
+        'branches_list': 'Branches List',
+        'tracking': 'Tracking',
+        'vehicle_tracking': 'Vehicle Tracking'
     }
 }
 

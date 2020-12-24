@@ -14,6 +14,9 @@ import HomeDashboard from 'pages/home/Dashboard';
 import HomeUsersList from 'pages/home/Users/List';
 import HomeUserView from 'pages/home/Users/View';
 import HomeReviewView from 'pages/home/Review/View';
+import ChatView from 'pages/home/Chat/View';
+import BranchesList from 'pages/home/Branches/List';
+import TrackingView from 'pages/home/Tracking/View';
 
 // Match locales with regular expression containing each locale separated by `|`
 const base = '/:locale(en|am)?';
@@ -27,9 +30,12 @@ const ServiceRoute = () => (
           <Route path="/:locale(en|am)?/login" component={LoginPage} />
           <Route path="/:locale(en|am)?/forget" component={ForgetPage} />
           <Route exact path='/:locale(en|am)?/home/dashboards' component={HomeDashboard} />
+          <Route exact path='/:locale(en|am)?/home/chat' component={ChatView} />
           <Route exact path='/:locale(en|am)?/home/users' component={HomeUsersList} />
           <Route exact path='/:locale(en|am)?/home/users/:id' component={HomeUserView} />
           <Route exact path='/:locale(en|am)?/home/reviews' component={HomeReviewView} />
+          <Route exact path='/:locale(en|am)?/home/branches' component={BranchesList} />
+          <Route exact path='/:locale(en|am)?/home/tracking' component={TrackingView} />
           <Route path="/:locale(en|am)?/error" component={Error500Page} />
           <Route path="*" component={Error404Page} />
         </Switch>
