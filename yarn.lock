@@ -11604,10 +11604,10 @@ react-router-dom@^5.2.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-router-i18n@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-router-i18n/-/react-router-i18n-1.0.0.tgz#42a4d69ed22aeb761ab758f7470fcc3bc40b9dd5"
-  integrity sha512-W2hYN27Tr7/rDauj+7VTpMWyi+erI7J6hYUg68vnWqVr/uiVbSJg9Ghimy+ai5fKzbXYKYk+5DCilhzszzLd4g==
+react-router-i18n@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-router-i18n/-/react-router-i18n-1.0.1.tgz#3321c4553ff6340efbd4171c9c08cc6034197166"
+  integrity sha512-/aT4U/gwFHh9NU1PqbmLDEnDq98ShepugSOj8F9qc0nhtotUWJ0arNwOtKOiX8Gw7olZ3QzD3tu55qvd9O5pig==
   dependencies:
     prop-types "^15.7.2"
 
