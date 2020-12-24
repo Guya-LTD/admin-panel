@@ -19,120 +19,190 @@ import { useFetch, useAsync } from 'react-async';
 import { Link as RouterLink } from "react-router-dom";
 import I18n from 'I18n';
 import TableContainer from 'pages/TableContainer';
+import Cookies from 'universal-cookie';
+import { Icon, Fill, Stroke, Style } from 'ol/style';
+import { fromLonLat, get } from 'ol/proj';
+import Point from 'ol/geom/Point';
+import Feature from 'ol/Feature';
+import VectorSource from 'ol/source/Vector';
+import Map from 'Map';
+import { Layers, TileLayer, VectorLayer } from 'Map/Layers';
+import { osm, vector } from "Map/Source";
+import { Controls, FullScreenControl } from 'Map/Controls';
+import io from "socket.io-client";
 
 const { REACT_APP_API_GATEWAY } = process.env;
 const USERS_URL = REACT_APP_API_GATEWAY + '/api/v1/users';
 
 
+let socket;
+
+let styles = {
+	'MultiPolygon': new Style({
+	  stroke: new Stroke({
+		color: 'blue',
+		width: 1,
+	  }),
+	  fill: new Fill({
+		color: 'rgba(0, 0, 255, 0.1)',
+	  }),
+	}),
+  };
+
+const geojsonObject = {
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"properties": {
+				"kind": "county",
+				"name": "Wyandotte",
+				"state": "KS"
+			},
+			"geometry": {
+				"type": "MultiPolygon",
+				"coordinates": [
+					[
+						[
+							[
+								-94.8627,
+								39.202
+							],
+							[
+								-94.901,
+								39.202
+							],
+							[
+								-94.9065,
+								38.9884
+							],
+							[
+								-94.8682,
+								39.0596
+							],
+							[
+								-94.6053,
+								39.0432
+							],
+							[
+								-94.6053,
+								39.1144
+							],
+							[
+								-94.5998,
+								39.1582
+							],
+							[
+								-94.7422,
+								39.1691
+							],
+							[
+								-94.7751,
+								39.202
+							],
+							[
+								-94.8627,
+								39.202
+							]
+						]
+					]
+				]
+			}
+		}
+	]
+};
+
 const List = (props) => {
     /* Localization */
     const locale = props.match.params.locale == null ? 'en' : props.match.params.locale;
     
-    const [page, setPage] = useState(1);
+    const cookies = new Cookies();
 
-    const headers = { Accept: 'application/json' }
+    const [center, setCenter] = useState([38.7578, 8.9806]);
+	
+	const [zoom, setZoom] = useState(12);
 
-    const { data, error, isPending, run } = useFetch(USERS_URL + '?limit=10&page=' + page, { headers })
+	const [showLayer1, setShowLayer1] = useState(true);
 
-    /*useEffect(() => {
-        run()
-    })*/
+	const [showLayer2, setShowLayer2] = useState(true);
 
-    const columns = useMemo(
-        () => [
-            {
-                Header: <I18n t="date" />,
-                accessor: 'created_at'
-            },
-            {
-                Header: <I18n t="email" />,
-                accessor: 'email'
-            },
-            {
-                Header: <I18n t="name" />,
-                accessor: 'name'
-            },
-            {
-                Header: <I18n t="phone_number" />,
-                accessor: 'pnum'
-            },
-            {
-                Header: <I18n t="role" />,
-                accessor: 'role.name'
-            },
-            {
-                Header: <I18n t="status" />,
-                accessor: 'credential.blocked',
-                Cell: ({ cell }) => {
-                    const { value } = cell;
-                    if(value)
-                        return <Tip theme="red" variant="red"><I18n t="blocked" /></Tip>
-                    else
-                        return <Tip theme="royal-blue" variant="green"><I18n t="active" /></Tip>
-                }
-            },
-            {
-                Header: <SettingsOutline size="20px" />,
-                accessor: 'id',
-                Cell: ({ cell }) => {
-                    const { value } = cell;
-                    return <RouterLink to={'/' + locale + '/home/users/' + value} ><CreateOutline size="20px" /></RouterLink>
-                }
-            }
-        ]
-    )
+	var icon = new Icon({
+		color: '#BADA55',
+        crossOrigin: 'anonymous',
+        imgSize: [50, 50],
+        src: process.env.PUBLIC_URL + '/car-placeholder.svg',
+	}) 
 
-    const pageOne = event => {
-        event.preventDefault();
-        setPage(1);
-        run();
-    }
+	var style = new Style({
+		image: icon
+	})
 
-    const pageBack = event => {
-        event.preventDefault();
-        if(page >= 2) {
-            setPage(page - 1);
-            run();
+	var feature0 = new Feature({
+		geometry: new Point(fromLonLat([38.744268, 9.012839])),
+	})
+	feature0.setStyle(style)
+
+	//var vectorSource = new VectorSource({features: [feature]})
+
+    const [allFeatures, setAllFeatures] = useState({
+        'admin0': {
+            feature: feature0
         }
-    }
+    });
 
-    const nextPage = event => {
-        event.preventDefault();
-        setPage(page + 1);
-        run()
-    }
+    const [features, setFeatures] = useState([
+        feature0
+    ]);
 
-    const onRowClick = (state, rowInfo, column, instance) => {
-        return {
-            onClick: e => {
-                console.log('A Td Element was clicked!')
-                console.log('it produced this event:', e)
-                console.log('It was in this column:', column)
-                console.log('It was in this row:', rowInfo)
-                console.log('It was in this table instance:', instance)
-            }
-        }
-    }
+    const [vectorSource, setVectorSource] = useState(new VectorSource({features: features}));
+
+	function updateCoordinate(id, item) { 
+		// Structure of the input Item
+		// {"Coordinate":{"Longitude":80.2244,"Latitude":12.97784}}
+		var featureToUpdate = allFeatures[id]['feature'];
+	
+		var coord = fromLonLat([item.Coordinate.Longitude, item.Coordinate.Latitude]);
+	
+		featureToUpdate.getGeometry().setCoordinates(coord);
+	}
+    
+    useEffect(() => {
+        var userQuery = 'name=' + cookies.get('name') + '&type=driver'; 
+        socket = io('http://127.0.0.1:60012/', {query: userQuery})
+
+        socket.emit('driver:connection:join');
+
+        socket.emit('count:total');
+    })
+
+    useEffect(() => {
+        socket.on('tracking', message => {
+            var item = {};
+            item.id = allFeatures[message.name]['feature'].getId;
+            item.Coordinate = {};
+            item.Coordinate.Longitude = message.longitude;
+            item.Coordinate.Latitude = message.latitude;
+            updateCoordinate(message.name, item);
+        })
+    })
+
+
 
     return (
         <HomeLayout locale={locale} route_location='/home/users'>
             <PanelContainer>
-                <PanelContainerView>
-                    <div className="row">
-                        {/* Top Header */}
-                        <div className="row col-xs-12">
-                            {/* Top Header Left */}
-                            <div className="col-xs-8">
-                                <Typography size='h3'><I18n t="vehicle_tracking" /></Typography>
-                            </div>
-                            {/* End of Top Header Left */}
+            <div>
+                            <Map center={fromLonLat(center)} zoom={zoom}>
+                                <Layers>
+                                    <TileLayer source={osm()} zIndex={0} />
+                                    <VectorLayer source={vectorSource}  />
+                                </Layers>
+                                <Controls>
+                                    <FullScreenControl />
+                                </Controls>
+                            </Map>
                         </div>
-                        {/* End of Top Header */}
-                        <br /><br /><br /><br />
-                        {/* Row Two */}
-                        dsf
-                    </div>
-                </PanelContainerView>
+                
             </PanelContainer>
         </HomeLayout>
     )
