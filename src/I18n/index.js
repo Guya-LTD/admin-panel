@@ -51,7 +51,10 @@ const translations = {
         'company': 'Company',
         'branches_list': 'Branches List',
         'tracking': 'Tracking',
-        'vehicle_tracking': 'Vehicle Tracking'
+        'vehicle_tracking': 'Vehicle Tracking',
+        'categories_list': 'Categories List',
+        'facets': 'Facets',
+        'categories': 'Categories'
     },
     am: {
         app: appAm,
@@ -86,7 +89,10 @@ const translations = {
         'company': 'Company',
         'branches_list': 'Branches List',
         'tracking': 'Tracking',
-        'vehicle_tracking': 'Vehicle Tracking'
+        'vehicle_tracking': 'Vehicle Tracking',
+        'categories_list': 'Categories List',
+        'facets': 'Facets',
+        'categories': 'Categories'
     }
 }
 

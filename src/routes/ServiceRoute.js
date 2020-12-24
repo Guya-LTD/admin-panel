@@ -17,6 +17,7 @@ import HomeReviewView from 'pages/home/Review/View';
 import ChatView from 'pages/home/Chat/View';
 import BranchesList from 'pages/home/Branches/List';
 import TrackingView from 'pages/home/Tracking/View';
+import CategoriesList from 'pages/home/Category/List';
 
 // Match locales with regular expression containing each locale separated by `|`
 const base = '/:locale(en|am)?';
@@ -36,6 +37,7 @@ const ServiceRoute = () => (
           <Route exact path='/:locale(en|am)?/home/reviews' component={HomeReviewView} />
           <Route exact path='/:locale(en|am)?/home/branches' component={BranchesList} />
           <Route exact path='/:locale(en|am)?/home/tracking' component={TrackingView} />
+          <Route exact path='/:locale(en|am)?/home/categories' component={CategoriesList} />
           <Route path="/:locale(en|am)?/error" component={Error500Page} />
           <Route path="*" component={Error404Page} />
         </Switch>

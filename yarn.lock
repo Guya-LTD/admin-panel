@@ -2542,6 +2542,11 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.3, ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+alfa-geez-node@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/alfa-geez-node/-/alfa-geez-node-1.1.3.tgz#60c5f061d7e9559fbe9fd8abc3f141994968a9b0"
+  integrity sha512-jrjssYcP1b/DCGeJ8S3awipfghF5tYCc6VwC6C/mnVzxD05mpiwz0ZIoxsOFW2UoCSeMyBIXpwCa1oepW49qkw==
+
 alphanum-sort@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"

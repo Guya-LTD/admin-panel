@@ -22,7 +22,8 @@ import {
     PeopleOutline,
     ChatbubblesOutline,
     StorefrontOutline,
-    MapOutline
+    MapOutline,
+    FileTrayOutline
 }from 'react-ionicons-icon';
 
 import Authorization from 'hocs/Authorization';
@@ -127,7 +128,7 @@ const Index = (props) => {
                     </RouterNavLink>
                     <br />
                     <br />
-                    <RouterNavLink to={'/' + locale + '/home/chat'} activeClassName="active" className={route_location == '/home/reviews' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
+                    <RouterNavLink to={'/' + locale + '/home/chat'} activeClassName="active" className={route_location == '/home/chat' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
                         <span><ChatbubblesOutline size="20px" /></span>
                         <I18n t="chat" />
                     </RouterNavLink>
@@ -148,6 +149,12 @@ const Index = (props) => {
                     <RouterNavLink to={'/' + locale + '/home/tracking'} activeClassName="active" className={route_location == '/home/tracking' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
                         <span><MapOutline size="20px" /></span>
                         <I18n t="tracking" />
+                    </RouterNavLink>
+                    <br />
+                    <br /> 
+                    <RouterNavLink to={'/' + locale + '/home/categories'} activeClassName="active" className={route_location == '/home/categories' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
+                        <span><FileTrayOutline size="20px" /></span>
+                        <I18n t="categories" />
                     </RouterNavLink>
                 </>
         }

@@ -37,90 +37,17 @@ const USERS_URL = REACT_APP_API_GATEWAY + '/api/v1/users';
 
 let socket;
 
-let styles = {
-	'MultiPolygon': new Style({
-	  stroke: new Stroke({
-		color: 'blue',
-		width: 1,
-	  }),
-	  fill: new Fill({
-		color: 'rgba(0, 0, 255, 0.1)',
-	  }),
-	}),
-  };
-
-const geojsonObject = {
-	"type": "FeatureCollection",
-	"features": [
-		{
-			"type": "Feature",
-			"properties": {
-				"kind": "county",
-				"name": "Wyandotte",
-				"state": "KS"
-			},
-			"geometry": {
-				"type": "MultiPolygon",
-				"coordinates": [
-					[
-						[
-							[
-								-94.8627,
-								39.202
-							],
-							[
-								-94.901,
-								39.202
-							],
-							[
-								-94.9065,
-								38.9884
-							],
-							[
-								-94.8682,
-								39.0596
-							],
-							[
-								-94.6053,
-								39.0432
-							],
-							[
-								-94.6053,
-								39.1144
-							],
-							[
-								-94.5998,
-								39.1582
-							],
-							[
-								-94.7422,
-								39.1691
-							],
-							[
-								-94.7751,
-								39.202
-							],
-							[
-								-94.8627,
-								39.202
-							]
-						]
-					]
-				]
-			}
-		}
-	]
-};
-
 const List = (props) => {
     /* Localization */
     const locale = props.match.params.locale == null ? 'en' : props.match.params.locale;
     
     const cookies = new Cookies();
 
-    const [center, setCenter] = useState([38.7578, 8.9806]);
+    //const [center, setCenter] = useState([38.7578, 8.9806]);
+
+    const [center, setCenter] = useState([38.744268, 9.012839]);
 	
-	const [zoom, setZoom] = useState(12);
+	const [zoom, setZoom] = useState(16);
 
 	const [showLayer1, setShowLayer1] = useState(true);
 
@@ -140,18 +67,26 @@ const List = (props) => {
 	var feature0 = new Feature({
 		geometry: new Point(fromLonLat([38.744268, 9.012839])),
 	})
-	feature0.setStyle(style)
+    feature0.setStyle(style)
+    
+    var feature1 = new Feature({
+		geometry: new Point(fromLonLat([38.744268, 9.012839])),
+	})
+	feature1.setStyle(style)
 
 	//var vectorSource = new VectorSource({features: [feature]})
 
     const [allFeatures, setAllFeatures] = useState({
         'admin0': {
             feature: feature0
-        }
+        },
+        'admin1': {
+            feature: feature1
+        },
     });
 
     const [features, setFeatures] = useState([
-        feature0
+        feature0, feature1
     ]);
 
     const [vectorSource, setVectorSource] = useState(new VectorSource({features: features}));
@@ -177,6 +112,7 @@ const List = (props) => {
 
     useEffect(() => {
         socket.on('tracking', message => {
+            console.log(message);
             var item = {};
             item.id = allFeatures[message.name]['feature'].getId;
             item.Coordinate = {};
