@@ -11562,10 +11562,10 @@ react-icons@^2.2.5:
   dependencies:
     react-icon-base "2.1.0"
 
-react-ionicons-icon@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/react-ionicons-icon/-/react-ionicons-icon-0.1.1.tgz#ac2cb4f9e652265698165175b96a129d5aa9eafc"
-  integrity sha512-HvDlt3GPbenKUPryQu04omvgVnlCfFP+Dp7eFNbfSDtXP9dCw9beOr547io9Uo851p9G04peCls6BbqJz+rY1Q==
+react-ionicons-icon@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-ionicons-icon/-/react-ionicons-icon-0.1.2.tgz#f4c620a48b32595ad6e2704ea2dc4195b762cb08"
+  integrity sha512-bOkgVGqDfu9i7bKTPFtsJgGzXVBLpO98Ntg8H/EG864ELZyvX47KiJDHzqfXbHDoo2q9r4WtJdPBnDe7CUjVXw==
   dependencies:
     prop-types "^15.7.2"
 
