@@ -22,9 +22,9 @@ import TableContainer from 'pages/TableContainer';
 var alfaGeez = require('alfa-geez-node');
 
 const { REACT_APP_API_GATEWAY } = process.env;
-const USERS_URL = REACT_APP_API_GATEWAY + '/api/v1/users';
+const CATEGORIES_URL = '/api/v1/variant-types';
 
-
+  
 const List = (props) => {
     /* Localization */
     const locale = props.match.params.locale == null ? 'en' : props.match.params.locale;
@@ -33,17 +33,13 @@ const List = (props) => {
 
     const headers = { Accept: 'application/json' }
 
-    const { data, error, isPending, run } = useFetch(USERS_URL + '?limit=10&page=' + page, { headers })
-
-    /*useEffect(() => {
-        run()
-    })*/
+    const { data, error, isPending, run } = useFetch(CATEGORIES_URL + '?limit=10&page=' + page, { headers })
 
     const columns = useMemo(
         () => [
             {
                 Header: <I18n t="date" />,
-                accessor: 'created_at',
+                accessor: 'created_at.$date',
                 Cell: ({ cell }) => {
                     const { value } = cell;
                     var new_date = new Date(value);
@@ -61,38 +57,19 @@ const List = (props) => {
                 }
             },
             {
-                Header: <I18n t="email" />,
-                accessor: 'email'
+                Header: <I18n t="name_en" />,
+                accessor: 'names.en'
             },
             {
-                Header: <I18n t="name" />,
-                accessor: 'name'
-            },
-            {
-                Header: <I18n t="phone_number" />,
-                accessor: 'pnum'
-            },
-            {
-                Header: <I18n t="role" />,
-                accessor: 'role.name'
-            },
-            {
-                Header: <I18n t="status" />,
-                accessor: 'credential.blocked',
-                Cell: ({ cell }) => {
-                    const { value } = cell;
-                    if(value)
-                        return <Tip theme="red" variant="red"><I18n t="blocked" /></Tip>
-                    else
-                        return <Tip theme="royal-blue" variant="green"><I18n t="active" /></Tip>
-                }
+                Header: <I18n t="name_am" />,
+                accessor: 'names.am'
             },
             {
                 Header: <SettingsOutline size="20px" />,
-                accessor: 'id',
+                accessor: '_id.$oid',
                 Cell: ({ cell }) => {
                     const { value } = cell;
-                    return <RouterLink to={'/' + locale + '/home/users/' + value} ><CreateOutline size="20px" /></RouterLink>
+                    return <RouterLink to={'/' + locale + '/home/variant-types/' + value} ><CreateOutline size="20px" /></RouterLink>
                 }
             }
         ]
@@ -118,20 +95,8 @@ const List = (props) => {
         run()
     }
 
-    const onRowClick = (state, rowInfo, column, instance) => {
-        return {
-            onClick: e => {
-                console.log('A Td Element was clicked!')
-                console.log('it produced this event:', e)
-                console.log('It was in this column:', column)
-                console.log('It was in this row:', rowInfo)
-                console.log('It was in this table instance:', instance)
-            }
-        }
-    }
-
-    return (
-        <HomeLayout locale={locale} route_location='/home/users'>
+    return ( 
+        <HomeLayout locale={locale} route_location='/home/variant-types'>
             <PanelContainer>
                 <PanelContainerView>
                     <div className="row">
@@ -139,7 +104,7 @@ const List = (props) => {
                         <div className="row col-xs-12">
                             {/* Top Header Left */}
                             <div className="col-xs-8">
-                                <Typography size='h3'><I18n t="users_list" /></Typography>
+                                <Typography size='h3'><I18n t="variant_types_list" /></Typography>
                             </div>
                             {/* End of Top Header Left */}
                             {/* Top Header Right */}

@@ -23,7 +23,10 @@ import {
     ChatbubblesOutline,
     StorefrontOutline,
     MapOutline,
-    FileTrayOutline
+    FileTrayOutline,
+    LockClosedOutline,
+    CheckboxOutline,
+    Key
 }from 'react-ionicons-icon';
 
 import Authorization from 'hocs/Authorization';
@@ -122,9 +125,21 @@ const Index = (props) => {
         { 
             type: 'single', 
             list: <>
-                    <RouterNavLink to={'/' + locale + '/home/users'} activeClassName="active" className={route_location == '/home/user' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
+                    <RouterNavLink to={'/' + locale + '/home/users'} activeClassName="active" className={route_location == '/home/users' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
                         <span><PeopleOutline size="20px" /></span>
                             <I18n t="users" />
+                    </RouterNavLink>
+                    <br />
+                    <br />
+                    <RouterNavLink to={'/' + locale + '/home/permissions'} activeClassName="active" className={route_location == '/home/permissions' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
+                        <span><LockClosedOutline size="20px" /></span>
+                            <I18n t="permissions" />
+                    </RouterNavLink>
+                    <br />
+                    <br />
+                    <RouterNavLink to={'/' + locale + '/home/roles'} activeClassName="active" className={route_location == '/home/roles' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
+                        <span><Key size="20px" /></span>
+                            <I18n t="roles" />
                     </RouterNavLink>
                     <br />
                     <br />
@@ -155,6 +170,12 @@ const Index = (props) => {
                     <RouterNavLink to={'/' + locale + '/home/categories'} activeClassName="active" className={route_location == '/home/categories' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
                         <span><FileTrayOutline size="20px" /></span>
                         <I18n t="categories" />
+                    </RouterNavLink>
+                    <br />
+                    <br /> 
+                    <RouterNavLink to={'/' + locale + '/home/variant-types'} activeClassName="active" className={route_location == '/home/variant-types' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
+                        <span><CheckboxOutline size="20px" /></span>
+                        <I18n t="variant_types" />
                     </RouterNavLink>
                 </>
         }

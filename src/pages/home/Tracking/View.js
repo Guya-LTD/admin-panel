@@ -47,7 +47,7 @@ const List = (props) => {
 
     const [center, setCenter] = useState([38.744268, 9.012839]);
 	
-	const [zoom, setZoom] = useState(16);
+	const [zoom, setZoom] = useState(15);
 
 	const [showLayer1, setShowLayer1] = useState(true);
 
@@ -125,7 +125,7 @@ const List = (props) => {
 
 
     return (
-        <HomeLayout locale={locale} route_location='/home/users'>
+        <HomeLayout locale={locale} route_location='/home/tracking'>
             <PanelContainer>
             <div>
                             <Map center={fromLonLat(center)} zoom={zoom}>

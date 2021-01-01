@@ -54,7 +54,20 @@ const translations = {
         'vehicle_tracking': 'Vehicle Tracking',
         'categories_list': 'Categories List',
         'facets': 'Facets',
-        'categories': 'Categories'
+        'categories': 'Categories',
+        'permissions': 'Permissions',
+        'variant_types': 'Variant types',
+        'variant_types_list': 'Variant types list',
+        'roles': 'Roles',
+        'permissions_list': 'Permissions List',
+        'key': 'Key',
+        'create': 'Create',
+        'read': 'Read',
+        'write': 'Write',
+        'delete': 'Delete',
+        'true': 'True',
+        'false': 'False',
+        'uti': 'uti'
     },
     am: {
         app: appAm,
@@ -92,7 +105,20 @@ const translations = {
         'vehicle_tracking': 'Vehicle Tracking',
         'categories_list': 'Categories List',
         'facets': 'Facets',
-        'categories': 'Categories'
+        'categories': 'Categories',
+        'permissions': 'Permissions',
+        'variant_types': 'Variant types',
+        'variant_types_list': 'Variant types list',
+        'roles': 'Roles',
+        'permissions_list': 'Permissions List',
+        'key': 'Key',
+        'create': 'Create',
+        'read': 'Read',
+        'write': 'Write',
+        'delete': 'Delete',
+        'true': 'True',
+        'false': 'False',
+        'uti': 'uti'
     }
 }
 

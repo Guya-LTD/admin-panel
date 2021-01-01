@@ -21,8 +21,7 @@ import I18n from 'I18n';
 import TableContainer from 'pages/TableContainer';
 var alfaGeez = require('alfa-geez-node');
 
-const { REACT_APP_API_GATEWAY } = process.env;
-const USERS_URL = REACT_APP_API_GATEWAY + '/api/v1/users';
+const USERS_URL = '/api/v1/permissions';
 
 
 const List = (props) => {
@@ -33,7 +32,7 @@ const List = (props) => {
 
     const headers = { Accept: 'application/json' }
 
-    const { data, error, isPending, run } = useFetch(USERS_URL + '?limit=10&page=' + page, { headers })
+    const { data, error, isPending, run } = useFetch(USERS_URL + '?limit=15&page=' + page, { headers })
 
     /*useEffect(() => {
         run()
@@ -61,30 +60,55 @@ const List = (props) => {
                 }
             },
             {
-                Header: <I18n t="email" />,
-                accessor: 'email'
-            },
-            {
-                Header: <I18n t="name" />,
+                Header: <I18n t="name_en" />,
                 accessor: 'name'
             },
             {
-                Header: <I18n t="phone_number" />,
-                accessor: 'pnum'
+                Header: <I18n t="key" />,
+                accessor: 'key'
             },
             {
-                Header: <I18n t="role" />,
-                accessor: 'role.name'
-            },
-            {
-                Header: <I18n t="status" />,
-                accessor: 'credential.blocked',
+                Header: <I18n t="create" />,
+                accessor: 'create',
                 Cell: ({ cell }) => {
                     const { value } = cell;
                     if(value)
-                        return <Tip theme="red" variant="red"><I18n t="blocked" /></Tip>
+                        return <Tip theme="red" variant="red"><I18n t="true" /></Tip>
                     else
-                        return <Tip theme="royal-blue" variant="green"><I18n t="active" /></Tip>
+                        return <Tip theme="royal-blue" variant="green"><I18n t="false" /></Tip>
+                }
+            },
+            {
+                Header: <I18n t="read" />,
+                accessor: 'read',
+                Cell: ({ cell }) => {
+                    const { value } = cell;
+                    if(value)
+                        return <Tip theme="red" variant="red"><I18n t="true" /></Tip>
+                    else
+                        return <Tip theme="royal-blue" variant="green"><I18n t="false" /></Tip>
+                }
+            },
+            {
+                Header: <I18n t="write" />,
+                accessor: 'write',
+                Cell: ({ cell }) => {
+                    const { value } = cell;
+                    if(value)
+                        return <Tip theme="red" variant="red"><I18n t="true" /></Tip>
+                    else
+                        return <Tip theme="royal-blue" variant="green"><I18n t="false" /></Tip>
+                }
+            },
+            {
+                Header: <I18n t="delete" />,
+                accessor: 'delete',
+                Cell: ({ cell }) => {
+                    const { value } = cell;
+                    if(value)
+                        return <Tip theme="red" variant="red"><I18n t="true" /></Tip>
+                    else
+                        return <Tip theme="royal-blue" variant="green"><I18n t="false" /></Tip>
                 }
             },
             {
@@ -92,7 +116,7 @@ const List = (props) => {
                 accessor: 'id',
                 Cell: ({ cell }) => {
                     const { value } = cell;
-                    return <RouterLink to={'/' + locale + '/home/users/' + value} ><CreateOutline size="20px" /></RouterLink>
+                    return <RouterLink to={'/' + locale + '/home/permissions/' + value} ><CreateOutline size="20px" /></RouterLink>
                 }
             }
         ]
@@ -118,20 +142,8 @@ const List = (props) => {
         run()
     }
 
-    const onRowClick = (state, rowInfo, column, instance) => {
-        return {
-            onClick: e => {
-                console.log('A Td Element was clicked!')
-                console.log('it produced this event:', e)
-                console.log('It was in this column:', column)
-                console.log('It was in this row:', rowInfo)
-                console.log('It was in this table instance:', instance)
-            }
-        }
-    }
-
     return (
-        <HomeLayout locale={locale} route_location='/home/users'>
+        <HomeLayout locale={locale} route_location='/home/permissions'>
             <PanelContainer>
                 <PanelContainerView>
                     <div className="row">
@@ -139,7 +151,7 @@ const List = (props) => {
                         <div className="row col-xs-12">
                             {/* Top Header Left */}
                             <div className="col-xs-8">
-                                <Typography size='h3'><I18n t="users_list" /></Typography>
+                                <Typography size='h3'><I18n t="permissions_list" /></Typography>
                             </div>
                             {/* End of Top Header Left */}
                             {/* Top Header Right */}
