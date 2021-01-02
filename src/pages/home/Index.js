@@ -118,7 +118,7 @@ const Index = (props) => {
         {
             type: 'collapse',
             collapse: [
-                <Link size='sm' theme='royal-blue'> <I18n t='menu.all' /> </Link>,
+                <Link size='sm' theme='royal-blue' href={'/admin-panel/' + locale + '/home/dashboards'}> <I18n t='menu.all' /> </Link>,
                 <Link size='sm' theme='royal-blue'> <I18n t='menu.sales' /> </Link>
             ]
         },
