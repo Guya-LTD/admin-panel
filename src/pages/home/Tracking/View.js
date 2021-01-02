@@ -65,14 +65,19 @@ const List = (props) => {
 	})
 
 	var feature0 = new Feature({
-		geometry: new Point(fromLonLat([38.744268, 9.012839])),
+		geometry: new Point(fromLonLat([38.744320000, 9.012860000])),
 	})
     feature0.setStyle(style)
     
     var feature1 = new Feature({
-		geometry: new Point(fromLonLat([38.744268, 9.012839])),
+		geometry: new Point(fromLonLat([38.744630000, 9.012910000])),
 	})
-	feature1.setStyle(style)
+    feature1.setStyle(style)
+    
+    var feature2 = new Feature({
+		geometry: new Point(fromLonLat([38.744890000, 9.013020000])),
+	})
+	feature2.setStyle(style)
 
 	//var vectorSource = new VectorSource({features: [feature]})
 
@@ -83,10 +88,13 @@ const List = (props) => {
         'admin1': {
             feature: feature1
         },
+        'admin2': {
+            feature: feature2
+        },
     });
 
     const [features, setFeatures] = useState([
-        feature0, feature1
+        feature0, feature1, feature2
     ]);
 
     const [vectorSource, setVectorSource] = useState(new VectorSource({features: features}));
