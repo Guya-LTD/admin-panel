@@ -67,7 +67,22 @@ const translations = {
         'delete': 'Delete',
         'true': 'True',
         'false': 'False',
-        'uti': 'uti'
+        'uti': 'uti',
+        'payments': 'Payments',
+        'payments_list': 'Payments List',
+        'invoice_number': 'Invoice Number',
+        'transaction_id': 'Transaction Id',
+        'transaction_date': 'Transaction Date',
+        'transaction_medium': 'Transaction Medium',
+        'email_status': 'Email Status',
+        'approval_method': 'Approval Method',
+        'pending': 'Pending',
+        'sent': 'Sent',
+        'failed': 'Failed',
+        'transactions': 'Transactions',
+        'transactions_list': 'Transactions List',
+        'amount': 'Amount',
+        'flag': 'Flag'
     },
     am: {
         app: appAm,
@@ -118,7 +133,22 @@ const translations = {
         'delete': 'Delete',
         'true': 'True',
         'false': 'False',
-        'uti': 'uti'
+        'uti': 'uti',
+        'payments': 'Payments',
+        'payments_list': 'Payments List',
+        'invoice_number': 'Invoice Number',
+        'transaction_id': 'Transaction Id',
+        'transaction_date': 'Transaction Date',
+        'transaction_medium': 'Transaction Medium',
+        'email_status': 'Email Status',
+        'approval_method': 'Approval Method',
+        'pending': 'Pending',
+        'sent': 'Sent',
+        'failed': 'Failed',
+        'transactions': 'Transactions',
+        'transactions_list': 'Transactions List',
+        'amount': 'Amount',
+        'flag': 'Flag'
     }
 }
 

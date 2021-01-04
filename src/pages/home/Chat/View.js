@@ -96,6 +96,10 @@ const List = (props) => {
             setSupportCount(message);
         })
 
+        socket.on('support:customers:count:notify', message => {
+            console.log(message);
+        })
+
         socket.on('support:details:list', message => {
             var allChatLists = [];
             console.log(message);

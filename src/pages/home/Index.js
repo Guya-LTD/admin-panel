@@ -26,7 +26,9 @@ import {
     FileTrayOutline,
     LockClosedOutline,
     CheckboxOutline,
-    Key
+    Key,
+    CardOutline,
+    WalletOutline
 }from 'react-ionicons-icon';
 
 import Authorization from 'hocs/Authorization';
@@ -176,6 +178,18 @@ const Index = (props) => {
                     <RouterNavLink to={'/' + locale + '/home/variant-types'} activeClassName="active" className={route_location == '/home/variant-types' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
                         <span><CheckboxOutline size="20px" /></span>
                         <I18n t="variant_types" />
+                    </RouterNavLink>
+                    <br />
+                    <br /> 
+                    <RouterNavLink to={'/' + locale + '/home/payments'} activeClassName="active" className={route_location == '/home/payments' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
+                        <span><CardOutline size="20px" /></span>
+                        <I18n t="payments" />
+                    </RouterNavLink>
+                    <br />
+                    <br /> 
+                    <RouterNavLink to={'/' + locale + '/home/transactions'} activeClassName="active" className={route_location == '/home/transactions' ? "link link--sm theme-royal-blue active" : "link link--sm theme-royal-blue"}>
+                        <span><WalletOutline size="20px" /></span>
+                        <I18n t="transactions" />
                     </RouterNavLink>
                 </>
         }

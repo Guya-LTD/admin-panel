@@ -21,6 +21,8 @@ import CategoriesList from 'pages/home/Category/List';
 import VariantTypes from 'pages/home/VariantTypes/List';
 import PermissionsList from 'pages/home/Permissions/List';
 import RolesList from 'pages/home/Roles/List';
+import PaymentsList from 'pages/home/Payment/List';
+import TransactionsList from 'pages/home/Transactions/List';
 
 
 // Match locales with regular expression containing each locale separated by `|`
@@ -45,6 +47,8 @@ const ServiceRoute = () => (
           <Route exact path='/:locale(en|am)?/home/tracking' component={TrackingView} />
           <Route exact path='/:locale(en|am)?/home/categories' component={CategoriesList} />
           <Route exact path='/:locale(en|am)?/home/variant-types' component={VariantTypes} />
+          <Route exact path='/:locale(en|am)?/home/payments' component={PaymentsList} />
+          <Route exact path='/:locale(en|am)?/home/transactions' component={TransactionsList} />
           <Route path="/:locale(en|am)?/error" component={Error500Page} />
           <Route path="*" component={Error404Page} />
         </Switch>
