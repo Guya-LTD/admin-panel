@@ -24,7 +24,7 @@
     "@bit/guya-ltd.gcss.templates.panel": "^0.0.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@testing-library/user-event": "^12.7.2",
     "alfa-geez-node": "^1.1.3",
     "apexcharts": "^3.23.0",
     "ol": "^6.4.3",
